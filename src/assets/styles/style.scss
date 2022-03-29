@@ -37,6 +37,12 @@ body {
     background-color: $general_bg_color;
 }
 
+.animate__animated {
+    &.for__notifications {
+        animation-duration: .2s;
+    }
+}
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -46,22 +52,69 @@ body {
     }
 }
 
-$header_height: 65px;
-$header_bg_color: #2b2b2b;
+span {
+    &.badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-style: italic;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        &-danger {
+            background-color: $color_danger;
+            color: $color_light;
+            border: 1px solid $header_bg_color;
+        }
+    }
+}
+
 header {
     position: fixed;
     width: 100%;
     height: $header_height;
     background-color: $header_bg_color;
-    display: flex;
-    align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid $border_color;
+    z-index: 999;
     .header {
+        display: flex;
+        align-items: center;
+        position: relative;
         &__menu {
             color: lighten($header_bg_color, 20);
             font-size: 1.5rem;
             padding-left: 15px!important;
+        }
+        &__favorites {
+            padding-right: 15px!important;
+            i {
+                color: lighten($header_bg_color, 20);
+                font-size: 1.5rem;
+                position: relative;
+                transition: all .1s ease-in-out;
+                &:hover {
+                    cursor: pointer;
+                    color: lighten($header_bg_color, 40);
+                }
+                &:active {
+                    transform: scale(.9);
+                }
+                .badge {
+                    top: -10px;
+                    right: -10px;
+                }
+            }
+        }
+        &__droped-favorites-list {
+            position: absolute;
+            min-height: 100vh;
+            width: 100%;
+            background-color: white;
+            z-index: 99;
+            top: $header_height;
         }
         &__logo {
             .image-container {
@@ -81,6 +134,7 @@ section.sidebar {
     display: flex;
     justify-content: center;
     border-right: 1px solid $border_color;
+    z-index: 1;
     // background-color: blue;
     ul {
         li {
@@ -126,6 +180,7 @@ section.sidebar {
                     text-transform: capitalize;
                     color: darken($color_light, 10);
                     font-weight: bold;
+                    font-style: italic;
                 }
             }
         }
