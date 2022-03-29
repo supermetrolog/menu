@@ -1,15 +1,15 @@
 <template>
   <div class="index">
-    <CategoriesList />
+    <ProductsList />
   </div>
 </template>
 
 <script>
-import CategoriesList from "@/components/categories/CategoriesList";
+import ProductsList from "@/components/products/ProductsList";
 export default {
   name: "index",
   components: {
-    CategoriesList,
+    ProductsList,
   },
 };
 </script>

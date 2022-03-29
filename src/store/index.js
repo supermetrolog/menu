@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import User from './modules/User'
+import Products from './modules/Products'
 const store = createStore({
     state: {},
     mutations: {},
@@ -9,6 +10,7 @@ const store = createStore({
     getters: {},
     modules: {
         User,
+        Products
     }
 })
 store.checkAction = function(name) {

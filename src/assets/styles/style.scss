@@ -153,8 +153,8 @@ section.sidebar {
             }
             &.active {
                 .categories__image {
-                    border-color: $color_success;
-                    outline: 2px solid $color_success;
+                    border-color: $color_success_alt;
+                    outline: 2px solid $color_success_alt;
                 }
             }
             &:active {
@@ -187,8 +187,9 @@ section.sidebar {
     }
 }
 
-$content_padding: 20px;
+$content_padding: 15px;
 section.content {
     padding-top: $header_height + $content_padding;
     padding-left: $sidebar_width + $content_padding;
+    padding-right: $content_padding;
 }
