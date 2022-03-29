@@ -33,6 +33,10 @@ textarea::-webkit-scrollbar-thumb {
     }
 }
 
+body {
+    background-color: $general_bg_color;
+}
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -52,7 +56,7 @@ header {
     display: flex;
     align-items: center;
     padding-bottom: 10px;
-    z-index: 1;
+    border-bottom: 1px solid $border_color;
     .header {
         &__menu {
             color: lighten($header_bg_color, 20);
@@ -68,27 +72,61 @@ header {
     }
 }
 
-$sidebar_width: 55px;
+$sidebar_width: 60px;
 section.sidebar {
     margin-top: $header_height;
     position: fixed;
     height: 100vh;
     width: $sidebar_width;
-    background-color: red;
     display: flex;
     justify-content: center;
+    border-right: 1px solid $border_color;
+    // background-color: blue;
     ul {
         li {
+            // background-color: red;
             display: flex;
             justify-content: center;
-            background-color: black;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-top: 5px;
-            .image-container {
-                // width: ;
-                // background-color: blue;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            transition: all .1s ease-in-out;
+            user-select: none;
+            &:hover {
+                cursor: pointer;
+                .categories__image {
+                    border-color: lighten($border_color, 50);
+                }
+            }
+            &.active {
+                .categories__image {
+                    border-color: $color_success;
+                    outline: 2px solid $color_success;
+                }
+            }
+            &:active {
+                transform: scale(.9);
+            }
+            .categories__image {
+                display: flex;
+                justify-content: center;
+                width: 47px;
+                height: 47px;
+                border-radius: 50%;
+                margin-top: 5px;
+                border: 1px solid lighten($border_color, 20);
+                padding: 5px;
+                margin-bottom: 5px;
+            }
+            .categories__title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                p {
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    color: darken($color_light, 10);
+                    font-weight: bold;
+                }
             }
         }
     }
