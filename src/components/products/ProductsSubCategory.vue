@@ -1,6 +1,6 @@
 <template>
-  <div class="products__sub-category">
-    <h3>{{ title }}</h3>
+  <div class="products__sub_category">
+    <p class="products__sub_category__title">{{ title }}</p>
     <slot />
   </div>
 </template>

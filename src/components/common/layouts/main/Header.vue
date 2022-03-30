@@ -9,7 +9,9 @@
       </div>
       <div class="col-4 header__favorites text-right">
         <i class="fas fa-bookmark" @click="onClickFavorites">
-          <span class="badge badge-danger">2</span>
+          <span class="badge badge-danger" v-if="FAVORITES.length">{{
+            FAVORITES.length
+          }}</span>
         </i>
       </div>
       <transition
@@ -26,12 +28,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Header",
   data() {
     return {
       favoritesVisible: false,
     };
+  },
+  computed: {
+    ...mapGetters(["FAVORITES"]),
   },
   methods: {
     onClickFavorites() {

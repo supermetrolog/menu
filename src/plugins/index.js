@@ -1,13 +1,13 @@
 const formatterObject = {
-    currency(number, leng = 'ru', options = {}) {
+    currency(number, options = {}, lang = 'ru') {
         const defaultOptions = {
             style: 'currency',
             currency: 'RUB',
             ...options
         };
-        return new Intl.NumberFormat(leng, defaultOptions).format(number);
+        return new Intl.NumberFormat(lang, defaultOptions).format(number);
     },
-    number(number, leng = 'ru', options = {}) {
+    number(number, options = {}, leng = 'ru') {
         const defaultOptions = {
             ...options
         };

@@ -13,7 +13,13 @@
         <ProductsItem
           v-for="product of subCategory.products"
           :key="product.id"
+          :product="product"
         />
+        <!-- <ProductsItem
+          v-for="product of subCategory.products"
+          :key="product.id"
+          :product="product"
+        /> -->
       </ProductsSubCategory>
     </ProductsCategory>
   </div>

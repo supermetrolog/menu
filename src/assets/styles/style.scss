@@ -189,7 +189,115 @@ section.sidebar {
 
 $content_padding: 15px;
 section.content {
-    padding-top: $header_height + $content_padding;
-    padding-left: $sidebar_width + $content_padding;
-    padding-right: $content_padding;
+    padding-top: $header_height;
+    padding-left: $sidebar_width;
+}
+
+.products {
+    color: $color_light;
+    &__sub_category {
+        &__title {
+            color: darken($color_light, 10);
+            text-align: center;
+            padding: 5px 0px;
+            border-bottom: 1px solid $border_color;
+            font-weight: bold;
+            background-color: darken($general_bg_color, 1);
+            text-transform: uppercase;
+            font-size: 11px;
+            font-style: italic;
+        }
+    }
+    &__item {
+        border-bottom: 1px solid $border_color;
+        padding: $content_padding;
+        position: relative;
+        i {
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            color: lighten($header_bg_color, 20);
+            font-size: 22px;
+            transition: all .05s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.1);
+            }
+            &:active {
+                transform: scale(.9);
+            }
+            &.selected {
+                color: $color_danger;
+            }
+        }
+    }
+    &__image {
+        // background-color: lighten($general_bg_color, 50);
+        height: 70px;
+        width: 70px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .image-container {
+            height: 100px;
+        }
+    }
+    &__params {
+        padding: 5px;
+    }
+    &__title {
+        color: $color_success_alt;
+        font-weight: bold;
+    }
+    &__description {
+        // background-color: red;
+        height: 58px;
+        max-height: 58px;
+        overflow: hidden;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(to right, rgba($general_bg_color, 0), rgba($general_bg_color, .5), $general_bg_color, $general_bg_color);
+            bottom: 0px;
+            right: 0px;
+            color: red;
+        }
+        p {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: .9rem;
+        }
+    }
+    &__price {
+        text-align: right;
+    }
+    .price {
+        p {
+            font-size: 14px;
+            display: inline-block;
+            font-style: italic;
+        }
+        &__with_old_price {
+            p {
+                &.old_price {
+                    text-decoration: line-through;
+                    // color: darken($color_light, 20);
+                    color: $color_danger;
+                }
+                &.new_price {
+                    margin-left: 10px;
+                    // background-color: $color_success;
+                    color: $color_success;
+                    // font-weight: bold;
+                    padding: 0 5px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
 }
