@@ -35,23 +35,6 @@ dd {
 }
 
 
-/* Выставляем основные настройки по-умолчанию для body */
-
-body {
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
-html {
-    min-height: 100%;
-}
-
-
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
 
 ul[class],

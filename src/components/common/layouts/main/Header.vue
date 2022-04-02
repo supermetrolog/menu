@@ -19,9 +19,7 @@
         enter-active-class="animate__animated animate__fadeInDown for__notifications"
         leave-active-class="animate__animated animate__fadeOutUp for__notifications"
       >
-        <div class="header__droped-favorites-list" v-if="favoritesVisible">
-          favorites
-        </div>
+        <FavoritesList v-if="favoritesVisible" />
       </transition>
     </div>
   </header>
@@ -29,8 +27,12 @@
 
 <script>
 import { mapGetters } from "vuex";
+import FavoritesList from "./FavoritesList.vue";
 export default {
   name: "Header",
+  components: {
+    FavoritesList,
+  },
   data() {
     return {
       favoritesVisible: false,

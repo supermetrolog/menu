@@ -9,3 +9,15 @@ $sizes: ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1200px);
         }
     }
 }
+
+@mixin title {
+    color: darken($color_light, 10);
+    text-align: center;
+    padding: 5px 0px;
+    border-bottom: 1px solid $border_color;
+    font-weight: bold;
+    background-color: darken($general_bg_color, 1);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-style: italic;
+}

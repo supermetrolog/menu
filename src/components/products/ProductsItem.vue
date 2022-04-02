@@ -25,9 +25,15 @@
       </div>
     </div>
     <i
+      v-if="!selected"
       class="fas fa-bookmark"
       @click="FAVORITES_PUSH(product)"
       :class="{ selected: FAVORITES.find((item) => item.id == product.id) }"
+    ></i>
+    <i
+      v-else
+      class="fas fa-times for-delete"
+      @click="FAVORITES_FILTER(product)"
     ></i>
   </div>
 </template>
@@ -44,12 +50,16 @@ export default {
     product: {
       type: Object,
     },
+    selected: {
+      type: Boolean,
+      default: null,
+    },
   },
   computed: {
     ...mapGetters(["FAVORITES"]),
   },
   methods: {
-    ...mapActions(["FAVORITES_PUSH"]),
+    ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER"]),
   },
 };
 </script>

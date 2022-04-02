@@ -1,5 +1,6 @@
 @import "null.scss";
 @import "var.scss";
+@import "mixins.scss";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,500;1,700;1,900&display=swap');
 * {
     font-family: Montserrat;
@@ -34,7 +35,29 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 body {
+    min-height: 100%;
     background-color: $general_bg_color;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+
+/* Эти стили отключат прокрутку на странице */
+
+body.scroll-locked {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    min-height: 100%;
 }
 
 .animate__animated {
@@ -108,13 +131,19 @@ header {
                 }
             }
         }
+        $dropped_list_height: 100vh;
         &__droped-favorites-list {
             position: absolute;
-            min-height: 100vh;
+            min-height: $dropped_list_height;
+            max-height: $dropped_list_height;
             width: 100%;
-            background-color: white;
+            background-color: $general_bg_color;
             z-index: 99;
             top: $header_height;
+            overflow-y: auto;
+            .title {
+                @include title();
+            }
         }
         &__logo {
             .image-container {
@@ -191,21 +220,15 @@ $content_padding: 15px;
 section.content {
     padding-top: $header_height;
     padding-left: $sidebar_width;
+    // max-height: 100vh;
+    // overflow-y: scroll;
 }
 
 .products {
     color: $color_light;
     &__sub_category {
         &__title {
-            color: darken($color_light, 10);
-            text-align: center;
-            padding: 5px 0px;
-            border-bottom: 1px solid $border_color;
-            font-weight: bold;
-            background-color: darken($general_bg_color, 1);
-            text-transform: uppercase;
-            font-size: 11px;
-            font-style: italic;
+            @include title();
         }
     }
     &__item {
@@ -214,8 +237,8 @@ section.content {
         position: relative;
         i {
             position: absolute;
-            top: 7px;
-            right: 10px;
+            bottom: 10px;
+            right: 15px;
             color: lighten($header_bg_color, 20);
             font-size: 22px;
             transition: all .05s ease-in-out;
@@ -228,6 +251,10 @@ section.content {
             }
             &.selected {
                 color: $color_danger;
+            }
+            &.for-delete {
+                color: $color_danger;
+                font-size: 18px;
             }
         }
     }
@@ -260,7 +287,7 @@ section.content {
         &::after {
             content: '';
             position: absolute;
-            width: 100%;
+            width: 70%;
             height: 15px;
             background: linear-gradient(to right, rgba($general_bg_color, 0), rgba($general_bg_color, .5), $general_bg_color, $general_bg_color);
             bottom: 0px;

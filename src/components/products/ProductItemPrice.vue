@@ -32,39 +32,16 @@
 </template>
 
 <script>
+import { PriceType } from "@/components/mixins.js";
 export default {
+  mixins: [PriceType],
   name: "ProductItemPrice",
   props: {
     product: {
       type: Object,
     },
   },
-  computed: {
-    isSimplePrice() {
-      return (
-        this.product.price &&
-        !this.product.price_old &&
-        !this.product.price_from &&
-        !this.product.price_to
-      );
-    },
-    isSimplePriceWithOldPrice() {
-      return (
-        this.product.price &&
-        this.product.price_old &&
-        !this.product.price_from &&
-        !this.product.price_to
-      );
-    },
-    isRangePrice() {
-      return (
-        !this.product.price &&
-        !this.product.price_old &&
-        this.product.price_from &&
-        this.product.price_to
-      );
-    },
-  },
+  computed: {},
 };
 </script>
 
