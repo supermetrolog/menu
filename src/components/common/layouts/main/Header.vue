@@ -14,25 +14,16 @@
           }}</span>
         </i>
       </div>
-      <transition
-        mode="out-in"
-        enter-active-class="animate__animated animate__fadeInDown for__notifications"
-        leave-active-class="animate__animated animate__fadeOutUp for__notifications"
-      >
-        <FavoritesList v-if="favoritesVisible" />
-      </transition>
     </div>
   </header>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import FavoritesList from "./FavoritesList.vue";
+import { WindowScrollManager } from "@/components/mixins.js";
 export default {
+  mixins: [WindowScrollManager],
   name: "Header",
-  components: {
-    FavoritesList,
-  },
   data() {
     return {
       favoritesVisible: false,
@@ -42,8 +33,16 @@ export default {
     ...mapGetters(["FAVORITES"]),
   },
   methods: {
-    onClickFavorites() {
-      this.favoritesVisible = !this.favoritesVisible;
+    async onClickFavorites() {
+      if (this.$route.name == "index") {
+        this.windowScrollPositionSave();
+        this.$router.push({ name: "Favorites" });
+      } else {
+        await this.$router.push({ name: "index" });
+        this.$nextTick(() => {
+          this.windowScrollTo();
+        });
+      }
     },
   },
 };

@@ -7,6 +7,13 @@ const routes = [{
             import ('../pages/index.vue'),
     },
     {
+        path: '/favorites',
+        name: 'Favorites',
+        meta: { layout: 'header', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+        component: () =>
+            import ('../pages/Favorites.vue'),
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         meta: { layout: 'empty', auth: { isAuth: true, role: ['moderator', 'administrator'] } },

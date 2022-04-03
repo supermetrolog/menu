@@ -8,11 +8,13 @@
 <script>
 import EmptyLayout from "./components/common/layouts/empty/EmptyLayout";
 import MainLayout from "./components/common/layouts/main/MainLayout";
+import HeaderLayout from "./components/common/layouts/header/HeaderLayout";
 
 export default {
   components: {
     MainLayout,
     EmptyLayout,
+    HeaderLayout,
   },
   computed: {
     layout() {

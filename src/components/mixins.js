@@ -26,42 +26,27 @@ export const PriceType = {
     },
 }
 
-export const BodyScrollLocked = {
+export const WindowScrollManager = {
     data() {
         return {
-            locked: false,
-            bodyScrollTop: null,
+            windowScrollTop: null,
         };
     },
     methods: {
-        bodyScrollLocked() {
-            let body = document.getElementsByTagName("body")[0];
-            if (!this.locked) {
-                this.bodyScrollTop =
-                    typeof window.pageYOffset !== "undefined" ?
-                    window.pageYOffset :
-                    (
-                        document.documentElement ||
-                        document.body.parentNode ||
-                        document.body
-                    ).scrollTop;
-                console.log(this.bodyScrollTop);
-                console.log(window.pageYOffset);
-                console.log(document.documentElement.scrollTop);
-                console.log(document.body.parentNode.scrollTop);
-                console.log(document.body.scrollTop);
-                body.classList.add("scroll-locked");
-                this.locked = true;
-            }
+        windowScrollPositionSave() {
+            const windowScrollTop =
+                typeof window.pageYOffset !== "undefined" ?
+                window.pageYOffset :
+                (
+                    document.documentElement ||
+                    document.body.parentNode ||
+                    document.body
+                ).scrollTop;
+            console.log(windowScrollTop);
+            this.$store.dispatch('SET_WINDOW_SCROLL_TOP', windowScrollTop)
         },
-        bodyScrollUnLocked() {
-            let body = document.getElementsByTagName("body")[0];
-            if (this.locked) {
-                body.classList.remove("scroll-locked");
-                body.style.top = null;
-                window.scrollTo(0, this.bodyScrollTop);
-                this.locked = false;
-            }
+        windowScrollTo() {
+            window.scrollTo(0, this.$store.getters.WINDOW_SCROLL_TOP);
         }
     }
 }

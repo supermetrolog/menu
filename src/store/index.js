@@ -2,12 +2,24 @@ import { createStore } from 'vuex'
 import User from './modules/User'
 import Products from './modules/Products'
 const store = createStore({
-    state: {},
-    mutations: {},
-    actions: {
-
+    state: {
+        windwoScrollTop: null,
     },
-    getters: {},
+    mutations: {
+        setWindowScrollTop(state, data) {
+            state.windwoScrollTop = data;
+        }
+    },
+    actions: {
+        SET_WINDOW_SCROLL_TOP({ commit }, data) {
+            commit('setWindowScrollTop', data);
+        }
+    },
+    getters: {
+        WINDOW_SCROLL_TOP(state) {
+            return state.windwoScrollTop;
+        }
+    },
     modules: {
         User,
         Products
