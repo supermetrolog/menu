@@ -226,18 +226,20 @@ section.content {
         position: relative;
         i {
             position: absolute;
-            bottom: 10px;
-            right: 15px;
+            bottom: 0px;
+            right: 6px;
             color: lighten($header_bg_color, 20);
             font-size: 22px;
             transition: all .05s ease-in-out;
+            // background-color: red;
+            padding: 10px;
             cursor: pointer;
-            &:hover {
-                transform: scale(1.1);
-            }
-            &:active {
-                transform: scale(.9);
-            }
+            // &:hover {
+            //     transform: scale(1.1);
+            // }
+            // &:active {
+            //     transform: scale(.9);
+            // }
             &.selected {
                 color: $color_danger;
             }
@@ -269,7 +271,7 @@ section.content {
     }
     &__description {
         // background-color: red;
-        height: 58px;
+        min-height: 58px;
         max-height: 58px;
         overflow: hidden;
         position: relative;
@@ -282,6 +284,12 @@ section.content {
             bottom: 0px;
             right: 0px;
             color: red;
+        }
+        &.openned {
+            max-height: unset;
+            &::after {
+                display: none;
+            }
         }
         p {
             font-size: 13px;

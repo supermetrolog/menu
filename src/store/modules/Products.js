@@ -4,7 +4,6 @@ const Products = {
         subCategories: [{
                 id: 1,
                 title: 'Тяжёлые',
-                title_for_query: 'strong',
                 category: 0,
                 products: [{
                         id: 1,
@@ -37,7 +36,6 @@ const Products = {
             {
                 id: 2,
                 title: 'Легкие',
-                title_for_query: 'light',
                 category: 0,
                 products: [{
                         id: 3,
@@ -71,7 +69,6 @@ const Products = {
             {
                 id: 3,
                 title: 'Бургеры',
-                title_for_query: 'light',
                 category: 1,
                 products: [{
                         id: 4,
@@ -98,6 +95,40 @@ const Products = {
                         vuluem_to: null,
                         isNew: 0,
                         description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: 'Молочные напитки',
+                category: 3,
+                products: [{
+                        id: 5,
+                        title: "Ваниль",
+                        price: 350,
+                        price_old: 450,
+                        price_from: null,
+                        price_to: null,
+                        voluem: 0.4,
+                        voluem_from: null,
+                        vuluem_to: null,
+                        voluem_type: 'л',
+                        isNew: 1,
+                        description: "Мороженное, молоко, всбитые сливки"
+                    },
+                    {
+                        id: 6,
+                        title: "Шоколад",
+                        price: 450,
+                        price_old: null,
+                        price_from: null,
+                        price_to: null,
+                        voluem: 0.4,
+                        voluem_from: null,
+                        vuluem_to: null,
+                        voluem_type: 'л',
+                        isNew: 0,
+                        description: "Мороженное, молоко, шоколад, всбитые сливки"
                     }
                 ]
             }

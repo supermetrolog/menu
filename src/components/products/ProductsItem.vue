@@ -1,5 +1,8 @@
 <template>
-  <div class="products__item row no-gutters">
+  <div
+    class="products__item row no-gutters"
+    @click.prevent.stop="onClickOpenned"
+  >
     <div class="col-3 align-self-center">
       <div class="products__image">
         <div class="image-container">
@@ -17,7 +20,7 @@
         <div class="products__price">
           <ProductItemPrice :product="product" />
         </div>
-        <div class="products__description">
+        <div class="products__description" :class="{ openned }">
           <p>
             {{ product.description }}
           </p>
@@ -27,7 +30,7 @@
     <i
       v-if="!selected"
       class="fas fa-bookmark"
-      @click="FAVORITES_PUSH(product)"
+      @click.prevent.stop="FAVORITES_PUSH(product)"
       :class="{ selected: FAVORITES.find((item) => item.id == product.id) }"
     ></i>
     <i
@@ -46,6 +49,11 @@ export default {
   components: {
     ProductItemPrice,
   },
+  data() {
+    return {
+      openned: false,
+    };
+  },
   props: {
     product: {
       type: Object,
@@ -60,6 +68,9 @@ export default {
   },
   methods: {
     ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER"]),
+    onClickOpenned() {
+      this.openned = !this.openned;
+    },
   },
 };
 </script>
