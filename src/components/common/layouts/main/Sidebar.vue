@@ -27,6 +27,7 @@
 
 <script>
 import { Menu } from "@/const";
+import { scrollIntoView } from "seamless-scroll-polyfill";
 export default {
   name: "Sidebar",
   data() {
@@ -41,6 +42,23 @@ export default {
       };
       this.$router.replace({
         query,
+      });
+      this.scrollToSubCategory(category);
+    },
+
+    scrollToSubCategory(category) {
+      const SubCategories = document.querySelectorAll(
+        '.products__sub_category[data-category="' + category.id + '"]'
+      );
+      if (!SubCategories.length) return;
+      this.scrollTo(SubCategories[0]);
+    },
+
+    scrollTo(el) {
+      scrollIntoView(el, {
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
       });
     },
   },

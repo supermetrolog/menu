@@ -10,7 +10,7 @@
     <div class="col-9">
       <div class="products__params">
         <div class="products__title">
-          <p>
+          <p :class="{ 'text-warning': selected }">
             {{ product.title }}
           </p>
         </div>

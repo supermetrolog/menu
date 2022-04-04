@@ -167,9 +167,6 @@ section.sidebar {
             user-select: none;
             &:hover {
                 cursor: pointer;
-                .categories__image {
-                    border-color: lighten($border_color, 50);
-                }
             }
             &.active {
                 .categories__image {
