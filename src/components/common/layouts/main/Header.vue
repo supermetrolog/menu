@@ -34,11 +34,12 @@ export default {
   },
   methods: {
     async onClickFavorites() {
+      const query = this.$route.query;
       if (this.$route.name == "index") {
         this.windowScrollPositionSave();
-        this.$router.push({ name: "Favorites" });
+        this.$router.push({ name: "Favorites", query });
       } else {
-        await this.$router.push({ name: "index" });
+        await this.$router.push({ name: "index", query });
         this.$nextTick(() => {
           this.windowScrollTo();
         });

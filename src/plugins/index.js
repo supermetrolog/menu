@@ -16,8 +16,7 @@ const formatterObject = {
 };
 
 export const Formatter = {
-    install(app, options) {
-        console.log(app, options);
+    install(app) {
         app.config.globalProperties.$formatter = formatterObject;
     }
 }

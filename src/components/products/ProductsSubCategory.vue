@@ -12,6 +12,12 @@ export default {
     title: {
       type: String,
     },
+    observer: {
+      type: Object,
+    },
+  },
+  mounted() {
+    this.observer.observe(this.$el);
   },
 };
 </script>

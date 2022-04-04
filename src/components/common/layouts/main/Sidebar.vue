@@ -3,7 +3,7 @@
     <ul class="categories">
       <li
         v-for="category of categories"
-        :key="category.name"
+        :key="category.id"
         :title="category.title"
         @click="onClickCategory(category)"
         :class="{ active: $route.query.category == category.name }"
@@ -26,37 +26,12 @@
 </template>
 
 <script>
+import { Menu } from "@/const";
 export default {
   name: "Sidebar",
   data() {
     return {
-      categories: [
-        {
-          title: "кальяны",
-          image: "fuck.jpg",
-          name: "hookah",
-        },
-        {
-          title: "кухня",
-          image: "fuck.jpg",
-          name: "kitchen",
-        },
-        {
-          title: "алкоголь",
-          image: "fuck.jpg",
-          name: "alcohol",
-        },
-        {
-          title: "напитки",
-          image: "fuck.jpg",
-          name: "drink",
-        },
-        {
-          title: "чай",
-          image: "fuck.jpg",
-          name: "tea",
-        },
-      ],
+      categories: Menu,
     };
   },
   methods: {
