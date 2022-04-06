@@ -27,7 +27,8 @@
 
 <script>
 import { Menu } from "@/const";
-import { scrollIntoView } from "seamless-scroll-polyfill";
+import { scrollIntoView, scrollBy } from "seamless-scroll-polyfill";
+import { mapActions } from "vuex";
 export default {
   name: "Sidebar",
   data() {
@@ -36,6 +37,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["SET_SCROLLING"]),
     onClickCategory(category) {
       let query = {
         category: category.name,
@@ -51,7 +53,9 @@ export default {
         '.products__sub_category[data-category="' + category.id + '"]'
       );
       if (!SubCategories.length) return;
-      this.scrollTo(SubCategories[0]);
+      // this.scrollTo(SubCategories[0]);
+      this.scrollWindow(SubCategories[0]);
+      this.SET_SCROLLING();
     },
 
     scrollTo(el) {
@@ -59,6 +63,15 @@ export default {
         behavior: "smooth",
         block: "center",
         inline: "center",
+      });
+    },
+    scrollWindow(el) {
+      let topOffset = -65;
+      let top = el.getBoundingClientRect().top + topOffset;
+      scrollBy(window, {
+        top,
+        left: 0,
+        behavior: "smooth",
       });
     },
   },

@@ -34,21 +34,29 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["SUB_CATEGORIES"]),
+    ...mapGetters(["SUB_CATEGORIES", "IS_SCROLLING_NOW"]),
   },
   methods: {
     observerCallback(entries) {
       entries.forEach(({ target, isIntersecting }) => {
         if (!isIntersecting) {
+          console.error("нет");
           return;
         }
+        console.warn("пересекает");
 
         setTimeout(() => {
           const category = target.getAttribute("data-category");
           const CategoryItem = this.menu.find((item) => item.id == category);
           const query = { ...this.$route.query, category: CategoryItem.name };
-
-          this.$router.push({ query });
+          if (
+            !this.$route.query.category ||
+            (this.$route.query.category != CategoryItem.name &&
+              !this.IS_SCROLLING_NOW)
+          ) {
+            console.warn("push");
+            this.$router.push({ query });
+          }
         }, 100);
       });
     },
