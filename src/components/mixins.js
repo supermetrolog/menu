@@ -25,7 +25,23 @@ export const PriceType = {
         },
     },
 }
-
+export const VoluemType = {
+    computed: {
+        isSimpleVoluem() {
+            return (
+                this.product.voluem &&
+                !this.product.voluem_from &&
+                !this.product.voluem_to
+            );
+        },
+        isRangeVoluem() {
+            return (!this.product.voluem &&
+                this.product.voluem_from &&
+                this.product.voluem_to
+            );
+        },
+    },
+}
 export const WindowScrollManager = {
     data() {
         return {
@@ -42,7 +58,6 @@ export const WindowScrollManager = {
                     document.body.parentNode ||
                     document.body
                 ).scrollTop;
-            console.log(windowScrollTop);
             this.$store.dispatch('SET_WINDOW_SCROLL_TOP', windowScrollTop)
         },
         windowScrollTo() {

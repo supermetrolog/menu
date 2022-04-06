@@ -9,7 +9,6 @@
 textarea::-webkit-scrollbar {
     width: 5px;
     background-color: lighten($color_grey, 30);
-    // height: 100%;
 }
 
 textarea::-webkit-scrollbar-thumb {
@@ -123,22 +122,8 @@ header {
             }
         }
         $dropped_list_height: 100vh;
-        // &__droped-favorites-list {
-        //     position: absolute;
-        //     min-height: $dropped_list_height;
-        //     max-height: $dropped_list_height;
-        //     width: 100%;
-        //     background-color: $general_bg_color;
-        //     z-index: 99;
-        //     top: $header_height;
-        //     overflow-y: auto;
-        //     .title {
-        //         @include title();
-        //     }
-        // }
         &__logo {
             .image-container {
-                // background-color: red;
                 height: $header_height;
             }
         }
@@ -155,10 +140,8 @@ section.sidebar {
     justify-content: center;
     border-right: 1px solid $border_color;
     z-index: 1;
-    // background-color: blue;
     ul {
         li {
-            // background-color: red;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -171,7 +154,6 @@ section.sidebar {
             &.active {
                 .categories__image {
                     border-color: $color_success_alt;
-                    // outline: 2px solid $color_success_alt;
                 }
             }
             &:active {
@@ -208,9 +190,6 @@ $content_padding: 15px;
 section.content {
     padding-top: $header_height;
     padding-left: $sidebar_width;
-    padding-bottom: 50px;
-    // max-height: 100vh;
-    // overflow-y: scroll;
 }
 
 .products {
@@ -231,15 +210,8 @@ section.content {
             color: lighten($header_bg_color, 20);
             font-size: 22px;
             transition: all .05s ease-in-out;
-            // background-color: red;
             padding: 10px;
             cursor: pointer;
-            // &:hover {
-            //     transform: scale(1.1);
-            // }
-            // &:active {
-            //     transform: scale(.9);
-            // }
             &.selected {
                 color: $color_danger;
             }
@@ -250,7 +222,6 @@ section.content {
         }
     }
     &__image {
-        // background-color: lighten($general_bg_color, 50);
         height: 70px;
         width: 70px;
         overflow: hidden;
@@ -270,20 +241,21 @@ section.content {
         font-weight: bold;
     }
     &__description {
-        // background-color: red;
-        min-height: 58px;
+        // min-height: 58px;
         max-height: 58px;
         overflow: hidden;
         position: relative;
-        &::after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 15px;
-            background: linear-gradient(to right, rgba($general_bg_color, 0), rgba($general_bg_color, .5), $general_bg_color, $general_bg_color);
-            bottom: 0px;
-            right: 0px;
-            color: red;
+        &.text-hidden {
+            &::after {
+                content: '';
+                position: absolute;
+                width: 70%;
+                height: 15px;
+                background: linear-gradient(to right, rgba($general_bg_color, 0), rgba($general_bg_color, .5), $general_bg_color, $general_bg_color);
+                bottom: 0px;
+                right: 0px;
+                color: red;
+            }
         }
         &.openned {
             max-height: unset;
@@ -297,8 +269,35 @@ section.content {
             line-height: .9rem;
         }
     }
-    &__price {
-        text-align: right;
+    &__price_and_voluem {
+        // text-align: right;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__ingredients {
+        margin-bottom: 10px;
+        line-height: 12px;
+        p {
+            display: inline-block;
+            font-size: 12px;
+            margin: 0;
+            padding: 0 12px 0 0;
+            letter-spacing: 2px;
+            font-style: italic;
+            color: rgb(134, 255, 219);
+            position: relative;
+            &::after {
+                content: '–';
+                position: absolute;
+                right: 2px;
+                color: rgb(0, 253, 177);
+            }
+            &:last-child {
+                &::after {
+                    content: '';
+                }
+            }
+        }
     }
     .price {
         p {
@@ -310,16 +309,12 @@ section.content {
             p {
                 &.old_price {
                     text-decoration: line-through;
-                    // color: darken($color_light, 20);
                     color: $color_danger;
                 }
                 &.new_price {
                     margin-left: 10px;
-                    // background-color: $color_success;
                     color: $color_success;
-                    // font-weight: bold;
                     padding: 0 5px;
-                    border-radius: 5px;
                 }
             }
         }

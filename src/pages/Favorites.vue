@@ -11,12 +11,6 @@
           :product="product"
           selected
         />
-        <ProductsItem
-          v-for="product of FAVORITES"
-          :key="product.id"
-          :product="product"
-          selected
-        />
       </div>
     </div>
   </div>

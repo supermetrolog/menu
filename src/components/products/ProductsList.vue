@@ -40,11 +40,6 @@ export default {
     observerCallback(entries) {
       entries.forEach(({ target, isIntersecting }) => {
         if (!isIntersecting) {
-          console.error("fuck");
-        } else {
-          console.warn("fuck");
-        }
-        if (!isIntersecting) {
           return;
         }
 
@@ -65,7 +60,6 @@ export default {
     });
   },
   beforeUnmount() {
-    console.log("unmount");
     this.observer.disconnect();
   },
 };

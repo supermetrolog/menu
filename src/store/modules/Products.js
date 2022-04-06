@@ -14,7 +14,7 @@ const Products = {
                         price_to: null,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Американский табак, известный своей крепостью и интересными насыщенными вкусами"
                     },
@@ -27,7 +27,7 @@ const Products = {
                         price_to: null,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
                     }
@@ -46,7 +46,7 @@ const Products = {
                         price_to: 2400,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Американский табак"
                     },
@@ -59,7 +59,7 @@ const Products = {
                         price_to: null,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
                     }
@@ -79,7 +79,7 @@ const Products = {
                         price_to: 2400,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Американский табак"
                     },
@@ -92,7 +92,7 @@ const Products = {
                         price_to: null,
                         voluem: null,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         isNew: 0,
                         description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
                     }
@@ -103,7 +103,7 @@ const Products = {
                 title: 'Молочные напитки',
                 category: 3,
                 products: [{
-                        id: 5,
+                        id: 8878,
                         title: "Ваниль",
                         price: 350,
                         price_old: 450,
@@ -111,9 +111,22 @@ const Products = {
                         price_to: null,
                         voluem: 0.4,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         voluem_type: 'л',
                         isNew: 1,
+                        ingredients: [{
+                                id: 0,
+                                name: 'мороженное'
+                            },
+                            {
+                                id: 1,
+                                name: 'молоко'
+                            },
+                            {
+                                id: 2,
+                                name: 'всбитые сливки'
+                            },
+                        ],
                         description: "Мороженное, молоко, всбитые сливки"
                     },
                     {
@@ -125,10 +138,82 @@ const Products = {
                         price_to: null,
                         voluem: 0.4,
                         voluem_from: null,
-                        vuluem_to: null,
+                        voluem_to: null,
                         voluem_type: 'л',
                         isNew: 0,
                         description: "Мороженное, молоко, шоколад, всбитые сливки"
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: 'Лимонады',
+                category: 3,
+                products: [{
+                        id: 7,
+                        title: "Дюшес",
+                        price: null,
+                        price_old: null,
+                        price_from: 350,
+                        price_to: 600,
+                        voluem: null,
+                        voluem_from: 0.44,
+                        voluem_to: 1,
+                        voluem_type: 'л',
+                        isNew: 1,
+                        ingredients: [{
+                                id: 3,
+                                name: 'содовая'
+                            },
+                            {
+                                id: 4,
+                                name: 'груша'
+                            },
+                            {
+                                id: 5,
+                                name: 'пюре груша'
+                            },
+                            {
+                                id: 6,
+                                name: 'лимон'
+                            },
+                        ],
+                        description: "Ебать какой охлаждающий напиток"
+                    },
+                    {
+                        id: 8,
+                        title: "Маракуйя-манго",
+                        price: null,
+                        price_old: null,
+                        price_from: 355,
+                        price_to: 695,
+                        voluem: null,
+                        voluem_from: 0.44,
+                        voluem_to: 1,
+                        voluem_type: 'л',
+                        isNew: 0,
+                        ingredients: [{
+                                id: 7,
+                                name: 'содовая'
+                            },
+                            {
+                                id: 8,
+                                name: 'пюре манго'
+                            },
+                            {
+                                id: 9,
+                                name: 'пюре маракуйя'
+                            },
+                            {
+                                id: 10,
+                                name: 'манго'
+                            },
+                            {
+                                id: 11,
+                                name: 'маракуйя'
+                            },
+                        ],
+                        description: "Еще один ебать какой охлаждающий напиток"
                     }
                 ]
             }

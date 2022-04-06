@@ -17,11 +17,20 @@
             {{ product.title }}
           </p>
         </div>
-        <div class="products__price">
+        <div class="products__price_and_voluem">
+          <ProductItemVoluem :product="product" />
           <ProductItemPrice :product="product" />
         </div>
-        <div class="products__description" :class="{ openned }">
-          <p>
+        <div class="products__ingredients" v-if="product.ingredients">
+          <p v-for="ingredient of product.ingredients" :key="ingredient.id">
+            {{ ingredient.name }}
+          </p>
+        </div>
+        <div
+          class="products__description"
+          :class="{ openned, 'text-hidden': isLongedDescription }"
+        >
+          <p ref="description">
             {{ product.description }}
           </p>
         </div>
@@ -44,14 +53,17 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import ProductItemPrice from "./ProductItemPrice.vue";
+import ProductItemVoluem from "./ProductItemVoluem.vue";
 export default {
   name: "ProductsItem",
   components: {
     ProductItemPrice,
+    ProductItemVoluem,
   },
   data() {
     return {
       openned: false,
+      isLongedDescription: false,
     };
   },
   props: {
@@ -71,6 +83,17 @@ export default {
     onClickOpenned() {
       this.openned = !this.openned;
     },
+    checkLongDescription() {
+      const height = this.$refs.description.clientHeight;
+      const maxHeight = 58;
+      if (height > maxHeight) {
+        return (this.isLongedDescription = true);
+      }
+      return (this.isLongedDescription = false);
+    },
+  },
+  mounted() {
+    this.checkLongDescription();
   },
 };
 </script>
