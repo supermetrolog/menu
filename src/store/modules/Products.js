@@ -128,7 +128,7 @@ const Products = {
                         description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
                     },
                     {
-                        id: 222,
+                        id: 224,
                         title: "маленькая",
                         price: 2300,
                         price_old: 2950,
@@ -272,14 +272,20 @@ const Products = {
         }
     },
     actions: {
-        FAVORITES_PUSH({ commit, dispatch, getters }, product) {
+        FAVORITES_PUSH({
+            commit,
+            dispatch,
+            getters
+        }, product) {
             if (getters.FAVORITES.find(item => item.id == product.id)) {
                 dispatch('FAVORITES_FILTER', product);
             } else {
                 commit('pushFavorites', product);
             }
         },
-        FAVORITES_FILTER({ commit }, product) {
+        FAVORITES_FILTER({
+            commit
+        }, product) {
             commit('filterFavorites', product);
         },
     },
