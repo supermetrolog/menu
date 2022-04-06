@@ -65,7 +65,6 @@ const Products = {
                     }
                 ]
             },
-
             {
                 id: 3,
                 title: 'Бургеры',
@@ -86,6 +85,51 @@ const Products = {
                     {
                         id: 5,
                         title: "Маленькие",
+                        price: 2300,
+                        price_old: 2950,
+                        price_from: null,
+                        price_to: null,
+                        voluem: null,
+                        voluem_from: null,
+                        voluem_to: null,
+                        isNew: 0,
+                        description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
+                    }
+                ]
+            },
+            {
+                id: 51,
+                title: 'Пиццы',
+                category: 1,
+                products: [{
+                        id: 222,
+                        title: "Большая",
+                        price: null,
+                        price_old: null,
+                        price_from: 1850,
+                        price_to: 2400,
+                        voluem: null,
+                        voluem_from: null,
+                        voluem_to: null,
+                        isNew: 0,
+                        description: "Американский табак"
+                    },
+                    {
+                        id: 221,
+                        title: "Средняя",
+                        price: 2300,
+                        price_old: 2950,
+                        price_from: null,
+                        price_to: null,
+                        voluem: null,
+                        voluem_from: null,
+                        voluem_to: null,
+                        isNew: 0,
+                        description: "Глинянные чаши самые универсальные аксессуары, подходящие для различных табаков. Глина обладает высокой теплопроводностью, что позволяет раскрыть вкус и дымность табака на максимум"
+                    },
+                    {
+                        id: 222,
+                        title: "маленькая",
                         price: 2300,
                         price_old: 2950,
                         price_from: null,

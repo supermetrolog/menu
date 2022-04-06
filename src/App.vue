@@ -21,5 +21,8 @@ export default {
       return this.$route.meta.layout + "Layout";
     },
   },
+  mounted() {
+    document.title = "Мята меню";
+  },
 };
 </script>
