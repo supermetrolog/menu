@@ -7,6 +7,7 @@ import VueAxios from 'vue-axios'
 import Loader from "@/components/common/Loader";
 import { Formatter } from "@/plugins";
 import Notifications from "@kyvg/vue3-notification"
+import Maska from "maska"
 
 import 'animate.css'
 
@@ -21,4 +22,4 @@ if (process.env.NODE_ENV == 'development') {
 }
 const app = createApp(App);
 app.config.devtools = true;
-app.component('Loader', Loader).use(Notifications).use(Formatter).use(VueAxios, axios).use(store).use(router).mount('#app');
+app.component('Loader', Loader).use(Notifications).use(Maska).use(Formatter).use(VueAxios, axios).use(store).use(router).mount('#app');

@@ -1,7 +1,9 @@
 <template>
   <header>
     <div class="header row no-gutters">
-      <div class="header__menu col-4"><i class="fas fa-bars"></i></div>
+      <div class="header__menu col-4">
+        <i class="fas fa-bars" @click="onClickBar"></i>
+      </div>
       <div class="header__logo col-4 text-center">
         <div class="image-container">
           <img src="../../../../assets/images/header_logo.png" alt="" />
@@ -24,11 +26,6 @@ import { WindowScrollManager } from "@/components/mixins.js";
 export default {
   mixins: [WindowScrollManager],
   name: "Header",
-  data() {
-    return {
-      favoritesVisible: false,
-    };
-  },
   computed: {
     ...mapGetters(["FAVORITES"]),
   },
@@ -38,6 +35,19 @@ export default {
       if (this.$route.name == "index") {
         this.windowScrollPositionSave();
         this.$router.push({ name: "Favorites", query });
+      } else {
+        await this.$router.push({ name: "index", query });
+        this.$nextTick(() => {
+          this.windowScrollTo();
+        });
+      }
+    },
+
+    async onClickBar() {
+      const query = this.$route.query;
+      if (this.$route.name == "index") {
+        this.windowScrollPositionSave();
+        this.$router.push({ name: "Login", query });
       } else {
         await this.$router.push({ name: "index", query });
         this.$nextTick(() => {

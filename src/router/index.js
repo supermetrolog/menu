@@ -2,21 +2,28 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [{
         path: '/',
         name: 'index',
-        meta: { layout: 'main', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+        meta: { layout: 'main', auth: { isAuth: false, role: ['moderator', 'administrator'] } },
         component: () =>
             import ('../pages/index.vue'),
     },
     {
         path: '/favorites',
         name: 'Favorites',
-        meta: { layout: 'header', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+        meta: { layout: 'header', auth: { isAuth: false, role: ['moderator', 'administrator'] } },
         component: () =>
             import ('../pages/Favorites.vue'),
     },
     {
+        path: '/login',
+        name: 'Login',
+        meta: { layout: 'header', auth: { isAuth: false, role: ['moderator', 'administrator'] } },
+        component: () =>
+            import ('../pages/Login.vue'),
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
-        meta: { layout: 'empty', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+        meta: { layout: 'empty', auth: { isAuth: false, role: ['moderator', 'administrator'] } },
         component: () =>
             import ('../pages/NotFound.vue')
     },
