@@ -31,14 +31,21 @@ import { scrollIntoView, scrollBy } from "seamless-scroll-polyfill";
 import { mapActions } from "vuex";
 export default {
   name: "Sidebar",
-  data() {
-    return {
-      categories: Menu,
-    };
+  computed: {
+    categories() {
+      // if (this.$route.path == "/admin") {
+      //   return MenuAdmin;
+      // }
+      return Menu;
+    },
   },
   methods: {
     ...mapActions(["SET_SCROLLING"]),
     onClickCategory(category) {
+      if (category.redirect) {
+        this.$router.push({ name: category.name });
+        return;
+      }
       let query = {
         category: category.name,
       };

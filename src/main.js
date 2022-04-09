@@ -15,10 +15,10 @@ import './assets/styles/grid.min.css'
 import './assets/styles/style.scss'
 
 if (process.env.NODE_ENV == 'development') {
-    axios.defaults.baseURL = "http://crmka/";
+    axios.defaults.baseURL = "http://menu/";
 
 } else {
-    axios.defaults.baseURL = "http://api.billypro.beget.tech/";
+    axios.defaults.baseURL = "https://myatatasty.ru/";
 }
 const app = createApp(App);
 app.config.devtools = true;

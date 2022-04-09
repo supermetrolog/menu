@@ -196,6 +196,15 @@ section.content {
     padding-left: $sidebar_width;
 }
 
+.sidebar-layout {
+    .sidebar {
+        margin-top: 0;
+    }
+    .content {
+        padding-top: 0;
+    }
+}
+
 .products {
     color: $color_light;
     &__sub_category {
@@ -346,6 +355,7 @@ section.content {
     padding: 5px 10px 5px 10px;
     border: none;
     font-weight: bold;
+    text-align: center;
     &-large {
         width: 100%;
     }
@@ -357,6 +367,16 @@ section.content {
             background-color: $color_dark;
             border: 1px solid darken($color_myata, 20);
             color: $color_myata;
+        }
+    }
+    &-danger {
+        background-color: $color_danger;
+        border: 1px solid darken($color_danger, 20);
+        color: $color_light;
+        &-inline {
+            background-color: $color_dark;
+            border: 1px solid darken($color_danger, 20);
+            color: $color_danger;
         }
     }
 }
@@ -387,6 +407,21 @@ section.content {
         }
     }
     &-item {
+        .invalid {
+            border: 1px solid $color_danger!important;
+            outline: unset !important;
+            color: $color_danger!important;
+            &:focus {
+                outline: 1px solid $color_danger!important;
+            }
+        }
+        // .valid {
+        //     border: 1px solid $color_success!important;
+        //     outline: unset !important;
+        //     &:focus {
+        //         outline: 1px solid $color_success!important;
+        //     }
+        // }
         &.tags {
             margin-bottom: 250px;
             .multiselect {

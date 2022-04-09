@@ -1,10 +1,11 @@
 <template>
-  <div class="admin-index">admin</div>
+  <div class="admin">
+    <router-view />
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Admin",
+};
 </script>
-
-<style>
-</style>

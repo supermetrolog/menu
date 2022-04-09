@@ -29,3 +29,10 @@ export const Menu = [{
         name: "tea",
     },
 ];
+
+export const MenuAdmin = [{
+    id: 0,
+    title: "выйти",
+    image: "fuck.jpg",
+    name: "Logout",
+}, ];

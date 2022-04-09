@@ -21,6 +21,20 @@ const routes = [{
             import ('../pages/Login.vue'),
     },
     {
+        path: '/admin',
+        name: 'Admin',
+        meta: { layout: 'sidebar', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+        component: () =>
+            import ('../pages/admin/index.vue'),
+        children: [{
+            path: '',
+            name: 'AdminMain',
+            meta: { layout: 'sidebar', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+            component: () =>
+                import ('../pages/admin/Main.vue')
+        }, ]
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         meta: { layout: 'empty', auth: { isAuth: false, role: ['moderator', 'administrator'] } },
@@ -39,11 +53,10 @@ const router = createRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    // console.log("To:", to, "From:", from, next);
-    // const access_token = localStorage.getItem('access_token');
-    // if (to.meta.auth.isAuth && !access_token) {
-    //     return next({ name: "login" });
-    // }
+    const access_token = localStorage.getItem('access_token');
+    if (to.meta.auth.isAuth && !access_token) {
+        return next({ name: "Login" });
+    }
 
     // if (!to.meta.auth.isAuth && access_token) {
     //     return next({ name: from.name });

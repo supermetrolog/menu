@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import User from './modules/User'
 import Products from './modules/Products'
+import axios from 'axios'
 const store = createStore({
     state: {
         windwoScrollTop: null,
@@ -29,7 +30,22 @@ const store = createStore({
         },
         SET_SCROLLING({ commit }) {
             commit('setScrolling');
-        }
+        },
+        async INIT(context) {
+            console.log('INIT');
+            if (!localStorage.getItem("user")) {
+                // console.error('User not found in localStorage!');
+                return false;
+            }
+            await context.dispatch("SET_USER");
+            axios.defaults.headers.common[
+                "Authorization"
+            ] = `Bearer ${context.getters.THIS_USER.access_token}`;
+        },
+        DESTROY(context) {
+            console.log('DESTROY');
+            context.dispatch("DROP_USER");
+        },
     },
     getters: {
         WINDOW_SCROLL_TOP(state) {
