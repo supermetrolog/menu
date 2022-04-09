@@ -18,17 +18,20 @@
         <button class="btn btn-large btn-myata-inline">Создать продукт</button>
       </div>
     </div>
-
-    {{ THIS_USER.username }}
+    <ProductsList />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import ProductsList from "@/components/products/ProductsList";
 export default {
   name: "AdminMain",
+  components: {
+    ProductsList,
+  },
   computed: {
-    ...mapGetters(["THIS_USER"]),
+    ...mapGetters(["THIS_USER", "SUB_CATEGORIES"]),
   },
   mounted() {
     console.log(this.$route);
