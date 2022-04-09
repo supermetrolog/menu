@@ -4,7 +4,7 @@
       <div class="header__menu col-4"><i class="fas fa-bars"></i></div>
       <div class="header__logo col-4 text-center">
         <div class="image-container">
-          <img src="../../../../assets/images/logo.png" alt="" />
+          <img src="../../../../assets/images/header_logo.png" alt="" />
         </div>
       </div>
       <div class="col-4 header__favorites text-right">
