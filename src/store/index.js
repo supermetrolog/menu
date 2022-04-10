@@ -33,7 +33,7 @@ const store = createStore({
         },
         async INIT(context) {
             console.log('INIT');
-            if (!localStorage.getItem("user")) {
+            if (!localStorage.getItem("user") || localStorage.getItem("user") == 'undefined') {
                 // console.error('User not found in localStorage!');
                 return false;
             }
