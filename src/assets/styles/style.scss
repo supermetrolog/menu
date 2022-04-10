@@ -207,6 +207,12 @@ section.content {
 
 .products {
     color: $color_light;
+    &__category {
+        &__title {
+            @include title();
+            color: $color_danger;
+        }
+    }
     &__sub_category {
         &__title {
             @include title();

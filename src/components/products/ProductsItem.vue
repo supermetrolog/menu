@@ -23,7 +23,7 @@
         </div>
         <div class="products__ingredients" v-if="product.ingredients">
           <p v-for="ingredient of product.ingredients" :key="ingredient.id">
-            {{ ingredient.name }}
+            {{ ingredient.title }}
           </p>
         </div>
         <div

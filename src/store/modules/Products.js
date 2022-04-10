@@ -1,6 +1,10 @@
+import api from '@/api/api';
+
 const Products = {
     state: {
         favorites: [],
+        categories: [],
+        data: [],
         subCategories: [{
                 id: 1,
                 title: 'Тяжёлые',
@@ -269,9 +273,34 @@ const Products = {
         },
         filterFavorites(state, product) {
             state.favorites = state.favorites.filter(item => item.id != product.id);
+        },
+
+        updateCategories(state, data) {
+            state.categories = data;
+        },
+        updateData(state, data) {
+            state.data = data;
         }
     },
     actions: {
+        async FETCH_CATEGORIES({ getters, commit }) {
+            if (getters.CATEGORIES && getters.CATEGORIES.length) {
+                return;
+            }
+            const response = await api.categories.search();
+            if (response) {
+                commit('updateCategories', response);
+            }
+        },
+        async FETCH_DATA({ getters, commit }) {
+            if (getters.DATA && getters.DATA.length) {
+                return;
+            }
+            const response = await api.categories.search({ expand: 'subCategories.products.ingredients' });
+            if (response) {
+                commit('updateData', response);
+            }
+        },
         FAVORITES_PUSH({
             commit,
             dispatch,
@@ -295,6 +324,12 @@ const Products = {
         },
         FAVORITES(state) {
             return state.favorites
+        },
+        CATEGORIES(state) {
+            return state.categories;
+        },
+        DATA(state) {
+            return state.data;
         }
     }
 };

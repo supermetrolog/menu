@@ -1,24 +1,31 @@
 <template>
   <div class="products" id="observable-root">
-    <ProductsSubCategory
-      v-for="subCategory of SUB_CATEGORIES"
-      :key="subCategory.id"
-      :title="subCategory.title"
-      :observer="observer"
-      :data-category="subCategory.category"
+    <ProductsCategory
+      v-for="category of DATA"
+      :key="category.id"
+      :title="category.title"
     >
-      <ProductsItem
-        v-for="product of subCategory.products"
-        :key="product.id"
-        :product="product"
-      />
-    </ProductsSubCategory>
+      <ProductsSubCategory
+        v-for="subCategory of category.subCategories"
+        :key="subCategory.id"
+        :title="subCategory.title"
+        :observer="observer"
+        :data-category="subCategory.category_id"
+      >
+        <ProductsItem
+          v-for="product of subCategory.products"
+          :key="product.id"
+          :product="product"
+        />
+      </ProductsSubCategory>
+    </ProductsCategory>
   </div>
 </template>
 
 <script>
 import ProductsItem from "./ProductsItem.vue";
 import ProductsSubCategory from "./ProductsSubCategory.vue";
+import ProductsCategory from "./ProductsCategory.vue";
 import { mapGetters } from "vuex";
 import { Menu } from "@/const";
 export default {
@@ -26,6 +33,7 @@ export default {
   components: {
     ProductsItem,
     ProductsSubCategory,
+    ProductsCategory,
   },
   data() {
     return {
@@ -34,7 +42,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["SUB_CATEGORIES", "IS_SCROLLING_NOW"]),
+    ...mapGetters(["SUB_CATEGORIES", "IS_SCROLLING_NOW", "DATA"]),
   },
   methods: {
     observerCallback(entries) {

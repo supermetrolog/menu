@@ -2,11 +2,11 @@
   <section class="sidebar">
     <ul class="categories">
       <li
-        v-for="category of categories"
+        v-for="category of CATEGORIES"
         :key="category.id"
         :title="category.title"
         @click="onClickCategory(category)"
-        :class="{ active: $route.query.category == category.name }"
+        :class="{ active: $route.query.category == category.url_title }"
       >
         <div class="categories__image">
           <div class="image-container">
@@ -26,28 +26,18 @@
 </template>
 
 <script>
-import { Menu } from "@/const";
 import { scrollIntoView, scrollBy } from "seamless-scroll-polyfill";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Sidebar",
   computed: {
-    categories() {
-      // if (this.$route.path == "/admin") {
-      //   return MenuAdmin;
-      // }
-      return Menu;
-    },
+    ...mapGetters(["CATEGORIES"]),
   },
   methods: {
     ...mapActions(["SET_SCROLLING"]),
     onClickCategory(category) {
-      if (category.redirect) {
-        this.$router.push({ name: category.name });
-        return;
-      }
       let query = {
-        category: category.name,
+        category: category.url_title,
       };
       this.$router.replace({
         query,
