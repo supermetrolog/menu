@@ -49,7 +49,7 @@ const Products = {
                 return;
             }
             const response = await api.categories.search();
-            if (response) {
+            if (response && Array.isArray(response)) {
                 commit('updateCategories', response);
             }
         },
@@ -58,7 +58,7 @@ const Products = {
                 return;
             }
             const response = await api.categories.search({ expand: 'subCategories.products.ingredients' });
-            if (response) {
+            if (response && Array.isArray(response)) {
                 commit('updateData', response);
             }
         },
@@ -67,7 +67,7 @@ const Products = {
                 return;
             }
             const response = await api.categories.searchSubCategories();
-            if (response) {
+            if (response && Array.isArray(response)) {
                 commit('updateSubCategoriesList', response);
             }
         },
