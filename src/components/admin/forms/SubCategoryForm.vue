@@ -79,7 +79,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["CREATE_SUB_CATEGORY", "UPDATE_SUB_CATEGORY", "FETCH_DATA"]),
+    ...mapActions(["CREATE_SUB_CATEGORY", "UPDATE_SUB_CATEGORY", "FETCH_DATA", "FETCH_SUB_CATEGORIES_LIST"]),
     onSubmit() {
       this.v$.$validate();
       if (!this.v$.form.$error) {
