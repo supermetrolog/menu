@@ -6,7 +6,7 @@
         :key="category.id"
         :title="category.title"
         @click="onClickCategory(category)"
-        :class="{ active: $route.query.category == category.url_title }"
+        :class="{ active: $route.query.category == category.id }"
       >
         <div class="categories__image">
           <div class="image-container">
@@ -37,7 +37,7 @@ export default {
     ...mapActions(["SET_SCROLLING"]),
     onClickCategory(category) {
       let query = {
-        category: category.url_title,
+        category: category.id,
       };
       this.$router.replace({
         query,

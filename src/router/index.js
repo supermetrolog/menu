@@ -27,12 +27,20 @@ const routes = [{
         component: () =>
             import ('../pages/admin/index.vue'),
         children: [{
-            path: '',
-            name: 'AdminMain',
-            meta: { layout: 'sidebar', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
-            component: () =>
-                import ('../pages/admin/Main.vue')
-        }, ]
+                path: '',
+                name: 'AdminMain',
+                meta: { layout: 'sidebar', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+                component: () =>
+                    import ('../pages/admin/Main.vue')
+            },
+            {
+                path: 'form',
+                name: 'AdminForm',
+                meta: { layout: 'empty', auth: { isAuth: true, role: ['moderator', 'administrator'] } },
+                component: () =>
+                    import ('../pages/admin/Form.vue')
+            }
+        ]
     },
     {
         path: '/:catchAll(.*)',

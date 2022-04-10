@@ -1,6 +1,6 @@
 <template>
   <div class="admin-main">
-    <div class="row">
+    <div class="row no-gutters">
       <div class="col-10 mb-5 mx-auto">
         <button
           class="btn btn-large btn-myata-inline"
@@ -10,12 +10,28 @@
         </button>
       </div>
       <div class="col-10 mb-3 mx-auto">
-        <button class="btn btn-large btn-myata-inline">
+        <button
+          class="btn btn-large btn-myata-inline"
+          @click="onClickCreate('category')"
+        >
+          Создать категорию
+        </button>
+      </div>
+      <div class="col-10 mb-3 mx-auto">
+        <button
+          class="btn btn-large btn-myata-inline"
+          @click="onClickCreate('subcategory')"
+        >
           Создать подкатигорию
         </button>
       </div>
       <div class="col-10 mb-3 mx-auto">
-        <button class="btn btn-large btn-myata-inline">Создать продукт</button>
+        <button
+          class="btn btn-large btn-myata-inline"
+          @click="onClickCreate('product')"
+        >
+          Создать продукт
+        </button>
       </div>
     </div>
     <ProductsList />
@@ -32,6 +48,14 @@ export default {
   },
   computed: {
     ...mapGetters(["THIS_USER", "SUB_CATEGORIES"]),
+  },
+  methods: {
+    onClickCreate(for_form) {
+      const query = {
+        for: for_form,
+      };
+      this.$router.push({ path: "/admin/form", query });
+    },
   },
   mounted() {
     console.log(this.$route);
