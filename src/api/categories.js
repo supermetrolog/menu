@@ -117,4 +117,26 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
+    async deleteCategory(id) {
+        let url = "categories/" + id;
+        let data = false;
+        await axios
+            .delete(url)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
+    async deleteSubCategory(id) {
+        let url = "sub-categories/" + id;
+        let data = false;
+        await axios
+            .delete(url)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
 }

@@ -39,6 +39,16 @@
           @input="priceInput"
         />
         <Input
+          v-model="form.price_old"
+          :maska="{
+            mask: 'Z*',
+            tokens: { Z: { pattern: /[0-9]/ } },
+          }"
+          label="Цена старая"
+          class="col-12 mb-2"
+          @input="priceInput"
+        />
+        <Input
           v-model="form.price_from"
           :maska="{
             mask: 'Z*',

@@ -4,16 +4,18 @@
     <ProductsCategory
       v-for="category of DATA"
       :key="category.id"
-      :title="category.title"
+      :category="category"
       :isAdmin="isAdmin"
+      @deleteCategory="deleteCategory"
     >
       <ProductsSubCategory
         v-for="subCategory of category.subCategories"
         :key="subCategory.id"
-        :title="subCategory.title"
+        :subCategory="subCategory"
         :observer="observer"
         :data-category="subCategory.category_id"
         :isAdmin="isAdmin"
+        @deleteSubCategory="deleteSubCategory"
       >
         <ProductsItem
           v-for="product of subCategory.products"
@@ -56,7 +58,7 @@ export default {
     ...mapGetters(["SUB_CATEGORIES", "IS_SCROLLING_NOW", "DATA"]),
   },
   methods: {
-    ...mapActions(["FETCH_DATA"]),
+    ...mapActions(["FETCH_DATA", "FETCH_CATEGORIES"]),
     observerCallback(entries) {
       entries.forEach(({ target, isIntersecting }) => {
         if (!isIntersecting) {
@@ -82,6 +84,19 @@ export default {
     async deleteProduct(product) {
       this.loader = true;
       await api.categories.deleteProduct(product.id);
+      await this.FETCH_DATA(true);
+      this.loader = false;
+    },
+    async deleteCategory(category) {
+      this.loader = true;
+      await api.categories.deleteCategory(category.id);
+      await this.FETCH_DATA(true);
+      this.loader = false;
+    },
+    async deleteSubCategory(subCategory) {
+      this.loader = true;
+      await api.categories.deleteSubCategory(subCategory.id);
+      await this.FETCH_CATEGORIES(true);
       await this.FETCH_DATA(true);
       this.loader = false;
     },

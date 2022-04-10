@@ -121,8 +121,8 @@ header {
                     transform: scale(.9);
                 }
                 .badge {
-                    top: -10px;
-                    right: -10px;
+                    top: 5px;
+                    right: 5px;
                 }
             }
         }
@@ -225,11 +225,47 @@ p.title {
         &__title {
             @include title();
             color: $color_danger;
+            position: relative;
+        }
+        i {
+            position: absolute;
+            bottom: -5px;
+            right: 6px;
+            color: lighten($header_bg_color, 20);
+            font-size: 22px;
+            transition: all .05s ease-in-out;
+            padding: 10px;
+            cursor: pointer;
+            &.selected {
+                color: $color_danger;
+            }
+            &.for-delete {
+                color: $color_danger;
+                font-size: 18px;
+            }
         }
     }
     &__sub_category {
         &__title {
             @include title();
+            position: relative;
+        }
+        i {
+            position: absolute;
+            bottom: -5px;
+            right: 6px;
+            color: lighten($header_bg_color, 20);
+            font-size: 22px;
+            transition: all .05s ease-in-out;
+            padding: 10px;
+            cursor: pointer;
+            &.selected {
+                color: $color_danger;
+            }
+            &.for-delete {
+                color: $color_danger;
+                font-size: 18px;
+            }
         }
     }
     &__item {
@@ -765,7 +801,7 @@ $loader_animation_speed: .5s;
     -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
     animation: load6 $loader_animation_speed infinite ease, round $loader_animation_speed infinite ease;
     &-container {
-        position: absolute;
+        position: fixed;
         background-color: rgba($color: #000, $alpha: .5);
         top: 0;
         right: 0;

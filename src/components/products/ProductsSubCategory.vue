@@ -1,6 +1,14 @@
 <template>
   <div class="products__sub_category">
-    <p class="products__sub_category__title">{{ title }}</p>
+    <p class="products__sub_category__title">
+      {{ subCategory.title
+      }}<i
+        class="fas fa-times for-delete"
+        @click="$emit('deleteSubCategory', subCategory)"
+        v-if="isAdmin"
+      ></i>
+    </p>
+
     <slot />
   </div>
 </template>
@@ -9,8 +17,8 @@
 export default {
   name: "ProductsSubCategory",
   props: {
-    title: {
-      type: String,
+    subCategory: {
+      type: Object,
     },
     observer: {
       type: Object,
