@@ -34,7 +34,7 @@
         </button>
       </div>
     </div>
-    <ProductsList />
+    <ProductsList isAdmin />
   </div>
 </template>
 

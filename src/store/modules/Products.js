@@ -41,7 +41,7 @@ const Products = {
         },
         updateFormdata(state, data) {
             state.formdata = data;
-        }
+        },
     },
     actions: {
         async FETCH_CATEGORIES({ getters, commit }, required = false) {
@@ -110,7 +110,7 @@ const Products = {
         },
         DELETE_FORMDATA({ commit }) {
             commit('updateFormdata', {});
-        }
+        },
     },
     getters: {
         SUB_CATEGORIES(state) {

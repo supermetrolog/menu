@@ -36,17 +36,25 @@
         </div>
       </div>
     </div>
-    <i
-      v-if="!selected"
-      class="fas fa-bookmark"
-      @click.prevent.stop="FAVORITES_PUSH(product)"
-      :class="{ selected: FAVORITES.find((item) => item.id == product.id) }"
-    ></i>
-    <i
-      v-else
-      class="fas fa-times for-delete"
-      @click="FAVORITES_FILTER(product)"
-    ></i>
+    <template v-if="!isAdmin">
+      <i
+        v-if="!selected"
+        class="fas fa-bookmark"
+        @click.prevent.stop="FAVORITES_PUSH(product)"
+        :class="{ selected: FAVORITES.find((item) => item.id == product.id) }"
+      ></i>
+      <i
+        v-else
+        class="fas fa-times for-delete"
+        @click="FAVORITES_FILTER(product)"
+      ></i>
+    </template>
+    <template v-else>
+      <i
+        class="fas fa-times for-delete"
+        @click="$emit('deleteProduct', product)"
+      ></i>
+    </template>
   </div>
 </template>
 
@@ -74,12 +82,16 @@ export default {
       type: Boolean,
       default: null,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     ...mapGetters(["FAVORITES"]),
   },
   methods: {
-    ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER"]),
+    ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER", "DELETE_PRODUCT"]),
     onClickOpenned() {
       this.openned = !this.openned;
     },

@@ -106,4 +106,15 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
+    async deleteProduct(id) {
+        let url = "products/" + id;
+        let data = false;
+        await axios
+            .delete(url)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
 }

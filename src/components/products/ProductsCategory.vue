@@ -1,7 +1,6 @@
 <template>
   <div class="products__category">
-    <!-- <h1 class="text-center d-block">{{ title }}</h1> -->
-    <p class="products__category__title">{{ title }}</p>
+    <p class="products__category__title" v-if="isAdmin">{{ title }}</p>
     <slot />
   </div>
 </template>
@@ -12,6 +11,10 @@ export default {
   props: {
     title: {
       type: String,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
   },
 };

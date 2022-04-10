@@ -15,7 +15,12 @@ export default {
     observer: {
       type: Object,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
+
   mounted() {
     this.observer.observe(this.$el);
   },
