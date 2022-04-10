@@ -18,7 +18,7 @@ if (process.env.NODE_ENV == 'development') {
     axios.defaults.baseURL = "http://menu/";
 
 } else {
-    axios.defaults.baseURL = "https://api.myatatasty.ru/";
+    axios.defaults.baseURL = "http://api.myatatasty.ru/";
 }
 const app = createApp(App);
 app.config.devtools = true;
