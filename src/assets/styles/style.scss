@@ -144,6 +144,7 @@ section.sidebar {
     justify-content: center;
     border-right: 1px solid $border_color;
     z-index: 1;
+    background-color: $general_bg_color;
     ul {
         li {
             max-width: $sidebar_width;
@@ -197,6 +198,7 @@ $content_padding: 15px;
 section.content {
     padding-top: $header_height;
     padding-left: $sidebar_width;
+    background-color: #000;
 }
 
 .sidebar-layout {
@@ -229,6 +231,11 @@ p.title {
         border-bottom: 1px solid $border_color;
         padding: $content_padding;
         position: relative;
+        margin-bottom: 4px;
+        background-color: $general_bg_color;
+        &:last-child {
+            margin-bottom: 0;
+        }
         i {
             position: absolute;
             bottom: 0px;

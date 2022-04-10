@@ -55,12 +55,11 @@ export default {
 
         setTimeout(() => {
           const category = target.getAttribute("data-category");
-          const CategoryItem = this.menu.find((item) => item.id == category);
-          const query = { ...this.$route.query, category: CategoryItem.name };
+          // const CategoryItem = this.menu.find((item) => item.id == category);
+          const query = { ...this.$route.query, category };
           if (
             !this.$route.query.category ||
-            (this.$route.query.category != CategoryItem.name &&
-              !this.IS_SCROLLING_NOW)
+            (this.$route.query.category != category && !this.IS_SCROLLING_NOW)
           ) {
             console.warn("push");
             this.$router.push({ query });
