@@ -79,12 +79,7 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      "CREATE_SUB_CATEGORY",
-      "UPDATE_SUB_CATEGORY",
-      "FETCH_CATEGORIES",
-      "FETCH_DATA",
-    ]),
+    ...mapActions(["CREATE_SUB_CATEGORY", "UPDATE_SUB_CATEGORY", "FETCH_DATA"]),
     onSubmit() {
       this.v$.$validate();
       if (!this.v$.form.$error) {
@@ -107,6 +102,8 @@ export default {
     async create() {
       if (await this.CREATE_SUB_CATEGORY(this.form)) {
         await this.FETCH_DATA(true);
+        this.FETCH_SUB_CATEGORIES_LIST(true);
+
         this.$emit("created");
       }
       this.loader = false;

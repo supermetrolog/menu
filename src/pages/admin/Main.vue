@@ -1,9 +1,9 @@
 <template>
-  <div class="admin-main">
+  <div class="admin-main pt-4">
     <div class="row no-gutters">
       <div class="col-10 mb-5 mx-auto">
         <button
-          class="btn btn-large btn-myata-inline"
+          class="btn btn-large btn-warning-inline"
           @click="$router.push('/')"
         >
           На главную

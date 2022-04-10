@@ -36,3 +36,25 @@ export const MenuAdmin = [{
     image: "fuck.jpg",
     name: "Logout",
 }, ];
+
+export const VoluemType = [{
+        value: null,
+        title: null
+    },
+    {
+        value: 1,
+        title: 'л'
+    },
+    {
+        value: 2,
+        title: 'мл'
+    },
+    {
+        value: 3,
+        title: 'кг'
+    },
+    {
+        value: 4,
+        title: 'г'
+    },
+]

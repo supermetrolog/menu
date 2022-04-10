@@ -5,6 +5,7 @@ const Products = {
         favorites: [],
         categories: [],
         categories_list: [],
+        sub_categories_list: [],
         data: [],
         formdata: null
     },
@@ -18,10 +19,20 @@ const Products = {
 
         updateCategories(state, data) {
             state.categories = data;
+            state.categories_list = [];
             state.categories.forEach(category => {
                 state.categories_list.push({
                     value: category.id,
                     title: category.title
+                })
+            });
+        },
+        updateSubCategoriesList(state, data) {
+            state.sub_categories_list = [];
+            data.forEach(item => {
+                state.sub_categories_list.push({
+                    value: item.id,
+                    title: item.title
                 })
             });
         },
@@ -51,6 +62,15 @@ const Products = {
                 commit('updateData', response);
             }
         },
+        async FETCH_SUB_CATEGORIES_LIST({ getters, commit }, required = false) {
+            if (getters.SUB_CATEGORIES_LIST && getters.SUB_CATEGORIES_LIST.length && !required) {
+                return;
+            }
+            const response = await api.categories.searchSubCategories();
+            if (response) {
+                commit('updateSubCategoriesList', response);
+            }
+        },
         async CREATE_CATEGORY(_, formdata) {
             return await api.categories.createCategory(formdata);
         },
@@ -62,6 +82,12 @@ const Products = {
         },
         async UPDATE_SUB_CATEGORY(_, formdata) {
             return await api.categories.updateSubCategory(formdata);
+        },
+        async CREATE_PRODUCT(_, formdata) {
+            return await api.categories.createProduct(formdata);
+        },
+        async UPDATE_PRODUCT(_, formdata) {
+            return await api.categories.updateProduct(formdata);
         },
         FAVORITES_PUSH({
             commit,
@@ -98,6 +124,9 @@ const Products = {
         },
         CATEGORIES_LIST(state) {
             return state.categories_list;
+        },
+        SUB_CATEGORIES_LIST(state) {
+            return state.sub_categories_list;
         },
         DATA(state) {
             return state.data;

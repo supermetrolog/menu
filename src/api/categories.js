@@ -66,4 +66,44 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
+    async searchSubCategories(query = {}) {
+        // if (expand === null) {
+        //     expand = "subCategories.products.ingredients";
+        // }
+        query = new URLSearchParams(query).toString();
+        let url = "sub-categories?" + query;
+        let data = false;
+        await axios
+            .get(url)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
+
+    async createProduct(formdata) {
+        console.warn('CREATE');
+        let url = "products";
+        let data = false;
+        await axios
+            .post(url, formdata)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
+    async updateProduct(formdata) {
+        console.warn('UPDATE');
+        let url = "products";
+        let data = false;
+        await axios
+            .patch(url, formdata)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
 }

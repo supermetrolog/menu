@@ -2,22 +2,22 @@
   <div class="form-item">
     <label class="form-item-label" :class="{ required: required }">
       {{ label }}
-      <select
-        :class="inputClasses"
-        :disabled="disabled"
-        @change="onInput($event.target.value.trim())"
-        @keypress.enter.prevent
-        :value="modelValue"
-      >
-        <option
-          :value="option.value"
-          v-for="option of options"
-          :key="option.value"
-        >
-          {{ option.title }}
-        </option>
-      </select>
     </label>
+    <select
+      :class="inputClasses"
+      :disabled="disabled"
+      @change="onInput($event.target.value.trim())"
+      @keypress.enter.prevent
+      :value="modelValue"
+    >
+      <option
+        :value="option.value"
+        v-for="option of options"
+        :key="option.value"
+      >
+        {{ option.title }}
+      </option>
+    </select>
     <div class="error-container" v-if="v && v.$error">
       <p>{{ v.$errors[0].$message }}</p>
     </div>
