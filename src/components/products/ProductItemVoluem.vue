@@ -3,7 +3,7 @@
     <div v-if="isSimpleVoluem">
       <p>
         {{ $formatter.number(product.voluem) }}
-        <small>{{ product.voluem_type }}</small>
+        <small>{{ voluemType }}</small>
       </p>
     </div>
     <div v-if="isRangeVoluem" class="price__range">

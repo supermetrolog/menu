@@ -90,6 +90,7 @@ export default {
     async deleteCategory(category) {
       this.loader = true;
       await api.categories.deleteCategory(category.id);
+      await this.FETCH_CATEGORIES(true);
       await this.FETCH_DATA(true);
       this.loader = false;
     },
