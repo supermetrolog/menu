@@ -31,9 +31,7 @@ const User = {
         },
         async LOGOUT(context) {
             const response = await api.user.auth.logout();
-            if (response !== false) {
-                context.dispatch('DROP_USER');
-            }
+            context.dispatch('DROP_USER');
             return response;
         },
     },
