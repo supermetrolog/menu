@@ -249,6 +249,7 @@ p.title {
         &__title {
             @include title();
             position: relative;
+            border-bottom: none;
         }
         i {
             position: absolute;
@@ -269,6 +270,7 @@ p.title {
         }
     }
     &__item {
+        border-top: 1px solid $border_color;
         border-bottom: 1px solid $border_color;
         padding: $content_padding;
         position: relative;
