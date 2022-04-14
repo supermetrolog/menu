@@ -243,6 +243,12 @@ p.title {
                 color: $color_danger;
                 font-size: 18px;
             }
+            &.for-edit {
+                color: $color_myata;
+                font-size: 18px;
+                left: 0;
+                right: unset;
+            }
         }
     }
     &__sub_category {
@@ -267,6 +273,12 @@ p.title {
                 color: $color_danger;
                 font-size: 18px;
             }
+            &.for-edit {
+                color: $color_myata;
+                font-size: 18px;
+                left: 0;
+                right: unset;
+            }
         }
     }
     &__item {
@@ -281,8 +293,6 @@ p.title {
         }
         i {
             position: absolute;
-            bottom: 0px;
-            right: 6px;
             color: lighten($header_bg_color, 20);
             font-size: 22px;
             transition: all .05s ease-in-out;
@@ -294,6 +304,18 @@ p.title {
             &.for-delete {
                 color: $color_danger;
                 font-size: 18px;
+                left: 0;
+                bottom: 0;
+                right: unset;
+                top: unset;
+            }
+            &.for-edit {
+                color: $color_myata;
+                font-size: 18px;
+                left: 0;
+                top: 0;
+                right: unset;
+                bottom: unset;
             }
         }
     }

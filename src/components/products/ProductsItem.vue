@@ -51,9 +51,10 @@
     </template>
     <template v-else>
       <i
-        class="fas fa-times for-delete"
+        class="fas fa-trash-alt for-delete"
         @click="$emit('deleteProduct', product)"
       ></i>
+      <i class="fas fa-pen for-edit" @click="onClickEdit(product)"></i>
     </template>
   </div>
 </template>
@@ -91,7 +92,7 @@ export default {
     ...mapGetters(["FAVORITES"]),
   },
   methods: {
-    ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER", "DELETE_PRODUCT"]),
+    ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER", "SET_FORMDATA"]),
     onClickOpenned() {
       this.openned = !this.openned;
     },
@@ -102,6 +103,13 @@ export default {
         return (this.isLongedDescription = true);
       }
       return (this.isLongedDescription = false);
+    },
+    onClickEdit(product) {
+      this.SET_FORMDATA(product);
+      const query = {
+        for: "product",
+      };
+      this.$router.push({ path: "/admin/form", query });
     },
   },
   mounted() {

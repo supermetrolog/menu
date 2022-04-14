@@ -159,6 +159,7 @@ export default {
     },
     deleteItem(tag) {
       this.field = this.field.filter((item) => item.title != tag.title);
+      this.onChange();
     },
     selectItem(item) {
       if (this.field.find((field) => field.title == item.title)) {

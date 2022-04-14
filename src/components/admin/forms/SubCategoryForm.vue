@@ -24,7 +24,9 @@
         />
       </FormGroup>
       <FormGroup class="mt-4">
-        <Submit class="col-12"> Создать </Submit>
+        <Submit class="col-12">
+          {{ FORMDATA ? "Сохранить" : "Создать" }}
+        </Submit>
       </FormGroup>
     </Form>
   </div>
@@ -79,7 +81,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(["CREATE_SUB_CATEGORY", "UPDATE_SUB_CATEGORY", "FETCH_DATA", "FETCH_SUB_CATEGORIES_LIST"]),
+    ...mapActions([
+      "CREATE_SUB_CATEGORY",
+      "UPDATE_SUB_CATEGORY",
+      "FETCH_DATA",
+      "FETCH_SUB_CATEGORIES_LIST",
+    ]),
     onSubmit() {
       this.v$.$validate();
       if (!this.v$.form.$error) {
@@ -108,6 +115,13 @@ export default {
       }
       this.loader = false;
     },
+  },
+  async mounted() {
+    this.loader = true;
+    if (this.FORMDATA) {
+      this.form = { ...this.form, ...this.FORMDATA };
+    }
+    this.loader = false;
   },
 };
 </script>

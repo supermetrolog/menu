@@ -32,7 +32,7 @@ export default {
     },
     async updateCategory(formdata) {
         console.warn('UPDATE');
-        let url = "categories";
+        let url = "categories/" + formdata.id;
         let data = false;
         await axios
             .patch(url, formdata)
@@ -67,7 +67,7 @@ export default {
     },
     async updateSubCategory(formdata) {
         console.warn('UPDATE');
-        let url = "sub-categories";
+        let url = "sub-categories/" + formdata.id;
         let data = false;
         await axios
             .patch(url, formdata)
@@ -107,7 +107,7 @@ export default {
     },
     async updateProduct(formdata) {
         console.warn('UPDATE');
-        let url = "products";
+        let url = "products/" + formdata.id;
         let data = false;
         await axios
             .patch(url, formdata)

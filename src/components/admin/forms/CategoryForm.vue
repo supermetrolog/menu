@@ -17,7 +17,9 @@
         />
       </FormGroup>
       <FormGroup class="mt-4">
-        <Submit class="col-12"> Создать </Submit>
+        <Submit class="col-12">
+          {{ FORMDATA ? "Сохранить" : "Создать" }}
+        </Submit>
       </FormGroup>
     </Form>
   </div>
@@ -100,6 +102,13 @@ export default {
       }
       this.loader = false;
     },
+  },
+  async mounted() {
+    this.loader = true;
+    if (this.FORMDATA) {
+      this.form = { ...this.form, ...this.FORMDATA };
+    }
+    this.loader = false;
   },
 };
 </script>

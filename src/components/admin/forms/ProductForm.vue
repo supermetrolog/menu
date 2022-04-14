@@ -118,7 +118,9 @@
         />
       </FormGroup>
       <FormGroup class="mt-4">
-        <Submit class="col-12"> Создать </Submit>
+        <Submit class="col-12">
+          {{ FORMDATA ? "Сохранить" : "Создать" }}
+        </Submit>
       </FormGroup>
     </Form>
   </div>
@@ -303,8 +305,13 @@ export default {
 
   async mounted() {
     this.loader = true;
-    await this.FETCH_SUB_CATEGORIES_LIST();
-    await this.FETCH_INGREDIENTS(true);
+    await Promise.all([
+      this.FETCH_SUB_CATEGORIES_LIST(),
+      this.FETCH_INGREDIENTS(true),
+    ]);
+    if (this.FORMDATA) {
+      this.form = { ...this.form, ...this.FORMDATA };
+    }
     this.loader = false;
   },
   watch: {
