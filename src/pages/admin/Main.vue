@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import ProductsList from "@/components/products/ProductsList";
 export default {
   name: "AdminMain",
@@ -50,7 +50,9 @@ export default {
     ...mapGetters(["THIS_USER", "SUB_CATEGORIES"]),
   },
   methods: {
+    ...mapActions(["DELETE_FORMDATA"]),
     onClickCreate(for_form) {
+      this.DELETE_FORMDATA();
       const query = {
         for: for_form,
       };

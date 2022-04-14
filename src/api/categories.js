@@ -42,6 +42,17 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
+    async ingredients() {
+        let url = "products/ingredients";
+        let data = false;
+        await axios
+            .get(url)
+            .then((Response) => {
+                data = SuccessHandler.getData(Response);
+            })
+            .catch((e) => ErrorHandle.setError(e));
+        return data;
+    },
     async createSubCategory(formdata) {
         console.warn('CREATE');
         let url = "sub-categories";

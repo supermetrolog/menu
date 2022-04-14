@@ -28,6 +28,13 @@
           label="Описание"
           class="col-12 mb-2"
         />
+        <Tags
+          v-model="form.ingredients"
+          label="Ингредиенты"
+          class="col-12 mb-2"
+          searchable
+          :options="INGREDIENTS"
+        />
         <Input
           v-model="form.price"
           :maska="{
@@ -121,6 +128,7 @@
 import Form from "@/components/common/form/Form";
 import FormGroup from "@/components/common/form/FormGroup";
 import Input from "@/components/common/form/Input";
+import Tags from "@/components/common/form/Tags";
 import Textarea from "@/components/common/form/Textarea";
 import Select from "@/components/common/form/Select";
 import Submit from "@/components/common/form/Submit";
@@ -137,6 +145,7 @@ export default {
     Submit,
     Select,
     Textarea,
+    Tags,
   },
   data() {
     return {
@@ -156,12 +165,12 @@ export default {
         voluem_to: null,
         voluem_type: null,
         is_new: null,
-        ingredients: null,
+        ingredients: [],
       },
     };
   },
   computed: {
-    ...mapGetters(["FORMDATA", "SUB_CATEGORIES_LIST"]),
+    ...mapGetters(["FORMDATA", "SUB_CATEGORIES_LIST", "INGREDIENTS"]),
   },
   validations() {
     return {
@@ -216,6 +225,7 @@ export default {
       "UPDATE_PRODUCT",
       "FETCH_DATA",
       "FETCH_SUB_CATEGORIES_LIST",
+      "FETCH_INGREDIENTS",
     ]),
     onSubmit() {
       this.v$.$validate();
@@ -294,7 +304,16 @@ export default {
   async mounted() {
     this.loader = true;
     await this.FETCH_SUB_CATEGORIES_LIST();
+    await this.FETCH_INGREDIENTS(true);
     this.loader = false;
+  },
+  watch: {
+    form: {
+      handler() {
+        console.log("FORM: ", this.form);
+      },
+      deep: true,
+    },
   },
 };
 </script>

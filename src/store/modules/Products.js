@@ -7,7 +7,8 @@ const Products = {
         categories_list: [],
         sub_categories_list: [],
         data: [],
-        formdata: null
+        formdata: null,
+        ingredients: []
     },
     mutations: {
         pushFavorites(state, product) {
@@ -42,6 +43,9 @@ const Products = {
         updateFormdata(state, data) {
             state.formdata = data;
         },
+        updateIngredients(state, data) {
+            state.ingredients = data;
+        },
     },
     actions: {
         async FETCH_CATEGORIES({ getters, commit }, required = false) {
@@ -51,6 +55,15 @@ const Products = {
             const response = await api.categories.search();
             if (response && Array.isArray(response)) {
                 commit('updateCategories', response);
+            }
+        },
+        async FETCH_INGREDIENTS({ getters, commit }, required = false) {
+            if (getters.CATEGORIES && getters.CATEGORIES.length && !required) {
+                return;
+            }
+            const response = await api.categories.ingredients();
+            if (response && Array.isArray(response)) {
+                commit('updateIngredients', response);
             }
         },
         async FETCH_DATA({ getters, commit }, required = false) {
@@ -109,7 +122,7 @@ const Products = {
             commit('updateFormdata', data);
         },
         DELETE_FORMDATA({ commit }) {
-            commit('updateFormdata', {});
+            commit('updateFormdata', null);
         },
     },
     getters: {
@@ -133,6 +146,9 @@ const Products = {
         },
         FORMDATA(state) {
             return state.formdata;
+        },
+        INGREDIENTS(state) {
+            return state.ingredients;
         }
     }
 };
