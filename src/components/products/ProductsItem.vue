@@ -6,7 +6,7 @@
     <div class="col-3 align-self-center">
       <div class="products__image">
         <div class="image-container">
-          <img src="../../assets/images/icon.svg" alt="" />
+          <img :src="imageSrc" alt="" />
         </div>
       </div>
     </div>
@@ -91,6 +91,13 @@ export default {
   },
   computed: {
     ...mapGetters(["FAVORITES"]),
+    imageSrc() {
+      if (process.env.NODE_ENV == "development") {
+        return "http://menu/images/icon.png";
+      } else {
+        return "https://myatatasty.store/images/icon.png";
+      }
+    },
   },
   methods: {
     ...mapActions(["FAVORITES_PUSH", "FAVORITES_FILTER", "SET_FORMDATA"]),

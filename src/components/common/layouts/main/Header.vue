@@ -6,7 +6,7 @@
       </div>
       <div class="header__logo col-4 text-center">
         <div class="image-container">
-          <img src="../../../../assets/images/header_logo.png" alt="" />
+          <img :src="imageSrc" />
         </div>
       </div>
       <div class="col-4 header__favorites text-right">
@@ -28,6 +28,13 @@ export default {
   name: "Header",
   computed: {
     ...mapGetters(["FAVORITES"]),
+    imageSrc() {
+      if (process.env.NODE_ENV == "development") {
+        return "http://menu/images/header_logo.png";
+      } else {
+        return "https://myatatasty.store/images/header_logo.png";
+      }
+    },
   },
   methods: {
     async onClickFavorites() {

@@ -10,10 +10,7 @@
       >
         <div class="categories__image">
           <div class="image-container">
-            <img
-              src="../../../../assets/images/icon.svg"
-              :alt="category.title"
-            />
+            <img :src="imageSrc" :alt="category.title" />
           </div>
         </div>
 
@@ -32,6 +29,13 @@ export default {
   name: "Sidebar",
   computed: {
     ...mapGetters(["CATEGORIES"]),
+    imageSrc() {
+      if (process.env.NODE_ENV == "development") {
+        return "http://menu/images/icon.png";
+      } else {
+        return "https://myatatasty.store/images/icon.png";
+      }
+    },
   },
   methods: {
     ...mapActions(["SET_SCROLLING"]),
