@@ -22,7 +22,7 @@
           class="btn btn-large btn-myata-inline"
           @click="onClickCreate('subcategory')"
         >
-          Создать подкатигорию
+          Создать подкатегорию
         </button>
       </div>
       <div class="col-10 mb-3 mx-auto">

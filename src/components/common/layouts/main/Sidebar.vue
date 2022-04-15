@@ -11,7 +11,7 @@
         <div class="categories__image">
           <div class="image-container">
             <img
-              src="../../../../assets/images/logo.png"
+              src="../../../../assets/images/bar_icon.svg"
               :alt="category.title"
             />
           </div>

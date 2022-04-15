@@ -6,7 +6,7 @@
     <div class="col-3 align-self-center">
       <div class="products__image">
         <div class="image-container">
-          <img src="../../assets/images/hookah.png" alt="" />
+          <img src="../../assets/images/bar_icon.svg" alt="" />
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
       <i
         v-else
         class="fas fa-times for-delete"
+        :class="{ selected: selected }"
         @click="FAVORITES_FILTER(product)"
       ></i>
     </template>

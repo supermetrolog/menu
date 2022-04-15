@@ -165,7 +165,7 @@ section.sidebar {
             }
             &.active {
                 .categories__image {
-                    border-color: $color_success_alt;
+                    border-color: $color_myata;
                 }
             }
             &:active {
@@ -179,8 +179,13 @@ section.sidebar {
                 border-radius: 50%;
                 margin-top: 5px;
                 border: 2px solid lighten($border_color, 5);
-                padding: 5px;
+                padding: 2px;
                 margin-bottom: 5px;
+                .image-container {
+                    img {
+                        transform: scale(1.8);
+                    }
+                }
             }
             .categories__title {
                 overflow: hidden;
@@ -309,6 +314,12 @@ p.title {
                 right: unset;
                 top: unset;
             }
+            &.selected {
+                left: unset;
+                bottom: 0;
+                right: 0;
+                top: unset;
+            }
             &.for-edit {
                 color: $color_myata;
                 font-size: 18px;
@@ -329,6 +340,9 @@ p.title {
         justify-content: center;
         .image-container {
             height: 100px;
+            img {
+                transform: scale(1.6);
+            }
         }
     }
     &__params {
@@ -385,7 +399,7 @@ p.title {
             color: rgb(134, 255, 219);
             position: relative;
             &::after {
-                content: '–';
+                content: '|';
                 position: absolute;
                 right: 2px;
                 color: rgb(0, 253, 177);
