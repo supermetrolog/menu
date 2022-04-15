@@ -6,7 +6,7 @@
     <div class="col-3 align-self-center">
       <div class="products__image">
         <div class="image-container">
-          <img src="../../assets/images/bar_icon.svg" alt="" />
+          <img src="../../assets/images/icon.svg" alt="" />
         </div>
       </div>
     </div>
