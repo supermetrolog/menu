@@ -146,6 +146,7 @@ section.sidebar {
     height: 100vh;
     width: $sidebar_width;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     border-right: 1px solid $border_color;
     z-index: 1;
@@ -198,6 +199,30 @@ section.sidebar {
                     color: darken($color_light, 10);
                     font-weight: bold;
                     font-style: italic;
+                }
+            }
+        }
+    }
+    .sub-category-list {
+        max-width: $sidebar_width;
+        width: $sidebar_width;
+        display: flex;
+        justify-content: center;
+        .current-sub-category {
+            p {
+                position: relative;
+                transform: rotate(-90deg);
+                font-style: italic;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 14px;
+                color: $color_myata;
+                letter-spacing: 2px;
+                i {
+                    top: 0;
+                    right: -25px;
+                    position: absolute;
+                    font-size: 22px;
                 }
             }
         }
