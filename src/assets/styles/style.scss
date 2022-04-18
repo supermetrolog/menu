@@ -420,7 +420,8 @@ p.title {
             p {
                 &.old_price {
                     text-decoration: line-through;
-                    color: $color_danger;
+                    color: $color_grey;
+                    font-weight: normal;
                 }
                 &.new_price {
                     margin-left: 10px;

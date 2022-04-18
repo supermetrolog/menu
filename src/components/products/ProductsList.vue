@@ -12,9 +12,8 @@
         v-for="subCategory of category.subCategories"
         :key="subCategory.id"
         :subCategory="subCategory"
-        :observer="observer"
-        :data-category="subCategory.category_id"
         :isAdmin="isAdmin"
+        :data-category-sub="subCategory.category_id"
         @deleteSubCategory="deleteSubCategory"
       >
         <ProductsItem
@@ -22,6 +21,10 @@
           :key="product.id"
           :product="product"
           :isAdmin="isAdmin"
+          :data-sub-category="subCategory.id"
+          :data-category="category.id"
+          :observer="observerSubCategory"
+          :observerCategory="observer"
           @deleteProduct="deleteProduct"
         />
       </ProductsSubCategory>
@@ -45,7 +48,10 @@ export default {
   data() {
     return {
       observer: null,
+      observerSubCategory: null,
       loader: false,
+      IntersectionBufferSubCategory: [],
+      IntersectionBufferCategory: [],
     };
   },
   props: {
@@ -62,25 +68,61 @@ export default {
     observerCallback(entries) {
       entries.forEach(({ target, isIntersecting }) => {
         if (!isIntersecting) {
-          console.error("нет");
+          const category = target.getAttribute("data-category");
+          this.IntersectionBufferCategory =
+            this.IntersectionBufferCategory.filter((item) => item != category);
           return;
         }
-        console.warn("пересекает");
 
-        setTimeout(() => {
-          const category = target.getAttribute("data-category");
-          const query = { ...this.$route.query, category };
+        const category = target.getAttribute("data-category");
+        const query = { ...this.$route.query, category };
+        this.IntersectionBufferCategory =
+          this.IntersectionBufferCategory.filter((item) => item != category);
+        this.IntersectionBufferCategory.push(category);
+        if (
+          !this.$route.query.category ||
+          (this.$route.query.category != category && !this.IS_SCROLLING_NOW)
+        ) {
           if (
-            !this.$route.query.category ||
-            (this.$route.query.category != category && !this.IS_SCROLLING_NOW)
+            this.IntersectionBufferCategory.length &&
+            this.IntersectionBufferCategory[0]
           ) {
-            console.warn("push");
-            this.$router.push({ query });
+            query.category = this.IntersectionBufferCategory[0];
           }
-        }, 100);
+          this.$router.push({ query });
+        }
       });
     },
+    observerCallbackSubCategory(entries) {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) {
+          const sub_category = target.getAttribute("data-sub-category");
+          this.IntersectionBufferSubCategory =
+            this.IntersectionBufferSubCategory.filter(
+              (item) => item != sub_category
+            );
+          return;
+        }
 
+        const sub_category = target.getAttribute("data-sub-category");
+        const query = { ...this.$route.query, sub_category };
+        this.IntersectionBufferSubCategory =
+          this.IntersectionBufferSubCategory.filter(
+            (item) => item != sub_category
+          );
+        this.IntersectionBufferSubCategory.push(sub_category);
+        if (
+          !this.$route.query.sub_category ||
+          (this.$route.query.sub_category != sub_category &&
+            !this.IS_SCROLLING_NOW)
+        ) {
+          if (this.IntersectionBufferSubCategory.length) {
+            query.sub_category = this.IntersectionBufferSubCategory[0];
+          }
+          this.$router.push({ query });
+        }
+      });
+    },
     async deleteProduct(product) {
       this.loader = true;
       await api.categories.deleteProduct(product.id);
@@ -105,8 +147,15 @@ export default {
   created() {
     this.observer = new IntersectionObserver(this.observerCallback, {
       root: this.$el,
-      threshold: 0.5,
+      threshold: 1,
     });
+    this.observerSubCategory = new IntersectionObserver(
+      this.observerCallbackSubCategory,
+      {
+        root: this.$el,
+        threshold: 1,
+      }
+    );
   },
   beforeUnmount() {
     this.observer.disconnect();

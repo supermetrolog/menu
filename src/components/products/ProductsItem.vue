@@ -88,6 +88,12 @@ export default {
       type: Boolean,
       default: false,
     },
+    observer: {
+      type: Object,
+    },
+    observerCategory: {
+      type: Object,
+    },
   },
   computed: {
     ...mapGetters(["FAVORITES"]),
@@ -122,6 +128,8 @@ export default {
   },
   mounted() {
     this.checkLongDescription();
+    this.observer.observe(this.$el);
+    this.observerCategory.observe(this.$el);
   },
 };
 </script>

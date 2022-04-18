@@ -26,9 +26,6 @@ export default {
     subCategory: {
       type: Object,
     },
-    observer: {
-      type: Object,
-    },
     isAdmin: {
       type: Boolean,
       default: false,
@@ -43,9 +40,6 @@ export default {
       };
       this.$router.push({ path: "/admin/form", query });
     },
-  },
-  mounted() {
-    this.observer.observe(this.$el);
   },
 };
 </script>

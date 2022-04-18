@@ -51,7 +51,7 @@ export default {
 
     scrollToSubCategory(category) {
       const SubCategories = document.querySelectorAll(
-        '.products__sub_category[data-category="' + category.id + '"]'
+        '.products__sub_category[data-category-sub="' + category.id + '"]'
       );
       if (!SubCategories.length) return;
       // this.scrollTo(SubCategories[0]);
