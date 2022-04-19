@@ -36,9 +36,9 @@ export default {
     ...mapGetters(["CATEGORIES", "DATA"]),
     imageSrc() {
       if (process.env.NODE_ENV == "development") {
-        return "http://menu/images/icon.png";
+        return "http://menu/images/kitchen.png";
       } else {
-        return "https://myatatasty.store/images/icon.png";
+        return "https://myatatasty.store/images/kitchen.png";
       }
     },
     currentSubCategory() {
