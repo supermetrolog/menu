@@ -15,6 +15,16 @@
           :v="v$.form.title"
           @keydown.enter="onSubmit"
         />
+        <FileInput
+          v-model:native="form.fileList"
+          v-model:data="form.image"
+          :multiple="false"
+          :accept="'image/*'"
+          label="Документы"
+          class="col-12"
+        >
+          Выбрать файлы
+        </FileInput>
       </FormGroup>
       <FormGroup class="mt-4">
         <Submit class="col-12">
@@ -30,6 +40,7 @@ import Form from "@/components/common/form/Form";
 import FormGroup from "@/components/common/form/FormGroup";
 import Input from "@/components/common/form/Input";
 import Submit from "@/components/common/form/Submit";
+import FileInput from "@/components/common/form/FileInput.vue";
 import useValidate from "@vuelidate/core";
 import { required, helpers, minLength } from "@vuelidate/validators";
 import { mapActions, mapGetters } from "vuex";
@@ -40,6 +51,7 @@ export default {
     FormGroup,
     Input,
     Submit,
+    FileInput,
   },
   data() {
     return {
@@ -47,6 +59,8 @@ export default {
       loader: false,
       form: {
         title: null,
+        image: null,
+        fileList: [],
       },
     };
   },

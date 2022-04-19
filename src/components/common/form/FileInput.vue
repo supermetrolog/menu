@@ -47,7 +47,7 @@
                   class="d-flex align-self-center justify-content-center"
                 >
                   <img
-                    :src="require(`@/assets/image/${file.src2}.png`)"
+                    src="https://myatatasty.store/images/icon.png"
                     alt="file"
                     :class="file.src2"
                     :title="file.name"
@@ -90,7 +90,7 @@
                   class="d-flex align-self-center justify-content-center"
                 >
                   <img
-                    :src="'http://crmka/uploads/' + files"
+                    :src="'http://menu/uploads/' + files"
                     alt="file"
                     class="image"
                   />
@@ -130,7 +130,7 @@
               :class="{ single: !multiple }"
             >
               <img
-                :src="require(`@/assets/image/${file.src}.png`)"
+                src="https://myatatasty.store/images/icon.png"
                 alt="file"
                 :class="file.src"
                 :title="file.name"
@@ -307,6 +307,7 @@ $color_primary: #11698e;
 $color_dark: #2d2f34;
 $color_danger: #f93154;
 $color_success: #00b74a;
+$color_myata: rgb(134, 255, 219);
 
 .file-input {
   width: 100%;
@@ -323,6 +324,7 @@ $color_success: #00b74a;
       border-radius: 2px;
       outline: none;
       cursor: pointer;
+      background-color: transparent;
       &:hover {
         opacity: 0.8;
       }
@@ -330,8 +332,8 @@ $color_success: #00b74a;
         box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.5);
       }
       &.primary {
-        border: 2px dashed $color_primary;
-        color: $color_primary;
+        border: 2px solid $color_myata;
+        color: $color_myata;
         // background-color: $color_primary;
       }
     }

@@ -10,7 +10,7 @@
       >
         <div class="categories__image">
           <div class="image-container">
-            <img :src="imageSrc" :alt="category.title" />
+            <img :src="getImageSrc(category)" :alt="category.title" />
           </div>
         </div>
 
@@ -58,6 +58,23 @@ export default {
   },
   methods: {
     ...mapActions(["SET_SCROLLING"]),
+    getImageSrc(category) {
+      let baseUrl = "";
+      if (process.env.NODE_ENV == "development") {
+        baseUrl = "http://menu/uploads/";
+      } else {
+        baseUrl = "https://myatatasty.store/uploads/";
+      }
+      if (category.image) {
+        return baseUrl + category.image;
+      }
+
+      if (process.env.NODE_ENV == "development") {
+        return "http://menu/images/icon.png";
+      } else {
+        return "https://myatatasty.store/images/icon.png";
+      }
+    },
     onClickCategory(category) {
       let query = {
         category: category.id,
