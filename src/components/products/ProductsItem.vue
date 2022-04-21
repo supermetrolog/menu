@@ -96,12 +96,18 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["FAVORITES"]),
+    ...mapGetters(["FAVORITES", "DATA"]),
     imageSrc() {
+      const category = this.DATA.find((category) =>
+        category.subCategories.find(
+          (subCategory) => subCategory.id == this.product.sub_category_id
+        )
+      );
+      console.log("CATEGORY", category);
       if (process.env.NODE_ENV == "development") {
-        return "http://menu/images/icon.png";
+        return "http://menu/uploads/" + category.image;
       } else {
-        return "https://myatatasty.store/images/icon.png";
+        return "https://myatatasty.store/uploads/" + category.image;
       }
     },
   },

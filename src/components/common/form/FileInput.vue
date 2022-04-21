@@ -40,21 +40,14 @@
                   justify-content-center
                 "
               >
-                <a
-                  :href="file.src"
-                  target="_blank"
+                <img
+                  src="https://myatatasty.store/images/icon.png"
+                  alt="file"
+                  :class="file.src2"
                   :title="file.name"
-                  class="d-flex align-self-center justify-content-center"
-                >
-                  <img
-                    src="https://myatatasty.store/images/icon.png"
-                    alt="file"
-                    :class="file.src2"
-                    :title="file.name"
-                    v-if="allowedTypeList.includes(file.src2)"
-                  />
-                  <img :src="file.src2" alt="file" class="image" v-else />
-                </a>
+                  v-if="allowedTypeList.includes(file.src2)"
+                />
+                <img :src="file.src2" alt="file" class="image" v-else />
 
                 <div class="size-container text-right">
                   <p>{{ formatSize(file.size) }}</p>
@@ -84,17 +77,11 @@
                   justify-content-center
                 "
               >
-                <a
-                  :href="files"
-                  target="_blank"
-                  class="d-flex align-self-center justify-content-center"
-                >
-                  <img
-                    :src="'http://menu/uploads/' + files"
-                    alt="file"
-                    class="image"
-                  />
-                </a>
+                <img
+                  :src="'http://menu/uploads/' + files"
+                  alt="file"
+                  class="image"
+                />
                 <div class="delete-container" v-if="!reedOnly">
                   <i class="fas fa-times" @click="deleteFile(index)"></i>
                 </div>
@@ -147,6 +134,9 @@
           </div>
         </div>
       </div>
+      <div class="error-container" v-if="v && v.$error">
+        <p>{{ v.$errors[0].$message }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -197,6 +187,10 @@ export default {
     required: {
       type: Boolean,
       default: false,
+    },
+    v: {
+      type: Object,
+      default: null,
     },
   },
   methods: {

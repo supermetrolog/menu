@@ -12,6 +12,7 @@
           v-model="form.title"
           label="Название"
           class="col-12"
+          required
           :v="v$.form.title"
           @keydown.enter="onSubmit"
         />
@@ -22,6 +23,7 @@
           :accept="'image/*'"
           label="Документы"
           class="col-12"
+          :v="v$.form.image"
         >
           Выбрать файлы
         </FileInput>
@@ -76,6 +78,9 @@ export default {
             "название не может быть меньше 2 символов",
             minLength(2)
           ),
+        },
+        image: {
+          required: helpers.withMessage("выберите изображение", required),
         },
       },
     };
