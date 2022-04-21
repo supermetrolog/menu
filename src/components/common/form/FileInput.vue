@@ -78,7 +78,7 @@
                 "
               >
                 <img
-                  :src="'http://menu/uploads/' + files"
+                  :src="'https://myatatasty.store/uploads/' + files"
                   alt="file"
                   class="image"
                 />
