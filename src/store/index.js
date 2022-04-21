@@ -17,7 +17,7 @@ const store = createStore({
                 clearTimeout(state.scrollingTimer);
             }
             state.isScrollingNow = true;
-            console.log(state.isScrollingNow);
+            console.log('fuck', state.isScrollingNow);
             state.scrollingTimer = setTimeout(() => {
                 state.isScrollingNow = false;
                 console.log(state.isScrollingNow);

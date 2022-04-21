@@ -14,6 +14,7 @@
         :subCategory="subCategory"
         :isAdmin="isAdmin"
         :data-category-sub="subCategory.category_id"
+        :data-sub-category-sub="subCategory.id"
         @deleteSubCategory="deleteSubCategory"
       >
         <ProductsItem
@@ -89,7 +90,7 @@ export default {
           ) {
             query.category = this.IntersectionBufferCategory[0];
           }
-          this.$router.push({ query });
+          // this.$router.push({ query });
         }
       });
     },
@@ -112,14 +113,21 @@ export default {
           );
         this.IntersectionBufferSubCategory.push(sub_category);
         if (
-          !this.$route.query.sub_category ||
-          (this.$route.query.sub_category != sub_category &&
-            !this.IS_SCROLLING_NOW)
+          (!this.$route.query.sub_category ||
+            this.$route.query.sub_category != sub_category) &&
+          !this.IS_SCROLLING_NOW
         ) {
           if (this.IntersectionBufferSubCategory.length) {
             query.sub_category = this.IntersectionBufferSubCategory[0];
           }
-          this.$router.push({ query });
+          const category = this.DATA.find((category) =>
+            category.subCategories.find(
+              (subCategory) => subCategory.id == query.sub_category
+            )
+          );
+          query.category = category.id;
+          console.log("change", this.IS_SCROLLING_NOW);
+          this.$router.replace({ query });
         }
       });
     },

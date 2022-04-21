@@ -103,7 +103,6 @@ export default {
           (subCategory) => subCategory.id == this.product.sub_category_id
         )
       );
-      console.log("CATEGORY", category);
       if (process.env.NODE_ENV == "development") {
         return "http://menu/uploads/" + category.image;
       } else {

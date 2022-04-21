@@ -1,6 +1,10 @@
 <template>
   <div class="products__category">
-    <p class="products__category__title" v-if="isAdmin">
+    <p
+      class="products__category__title"
+      v-if="isAdmin || titleVisible"
+      @click="$emit('clickTitle')"
+    >
       {{ category.title }}
       <i
         v-if="isAdmin"
@@ -27,6 +31,10 @@ export default {
       type: Object,
     },
     isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    titleVisible: {
       type: Boolean,
       default: false,
     },

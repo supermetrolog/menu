@@ -1,6 +1,6 @@
 <template>
   <div class="products__sub_category">
-    <p class="products__sub_category__title">
+    <p class="products__sub_category__title" @click="$emit('clickTitle')">
       {{ subCategory.title }}
       <i
         v-if="isAdmin"

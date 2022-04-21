@@ -2,7 +2,7 @@
   <section class="sidebar">
     <ul class="categories">
       <li
-        v-for="category of CATEGORIES"
+        v-for="category of DATA"
         :key="category.id"
         :title="category.title"
         @click="onClickCategory(category)"
@@ -20,9 +20,44 @@
       </li>
     </ul>
     <div class="sub-category-list">
-      <div class="current-sub-category" v-if="currentSubCategory">
-        <p>{{ currentSubCategory.title }}<i class="fas fa-angle-down"></i></p>
+      <div
+        class="current-sub-category"
+        v-if="currentSubCategory"
+        @click="onClickSubCategoryList"
+      >
+        <p>
+          {{ currentSubCategory.title }}
+          <i class="fas fa-angle-down" v-if="!subCategoryListVisible"></i>
+          <i class="fas fa-angle-up" v-else></i>
+        </p>
       </div>
+      <transition
+        mode="out-in"
+        enter-active-class="animate__animated animate__fadeInRight for__modal"
+        leave-active-class="animate__animated animate__fadeOutRight for__modal"
+      >
+        <div class="sub-category-list-container" v-if="subCategoryListVisible">
+          <div class="sub-category-list-items">
+            <ProductsCategory
+              v-for="category of DATA"
+              :key="category.id"
+              :category="category"
+              :titleVisible="true"
+              :class="{ active: category.id == currentSubCategory.category_id }"
+              @clickTitle="onClickCategory(category)"
+            >
+              <ProductsSubCategory
+                v-for="subCategory of category.subCategories"
+                :key="subCategory.id"
+                :subCategory="subCategory"
+                :class="{ active: subCategory.id == currentSubCategory.id }"
+                @clickTitle="onClickSubCategory(subCategory)"
+              >
+              </ProductsSubCategory>
+            </ProductsCategory>
+          </div>
+        </div>
+      </transition>
     </div>
   </section>
 </template>
@@ -30,8 +65,19 @@
 <script>
 import { scrollIntoView, scrollBy } from "seamless-scroll-polyfill";
 import { mapActions, mapGetters } from "vuex";
+import ProductsCategory from "@/components/products/ProductsCategory.vue";
+import ProductsSubCategory from "@/components/products/ProductsSubCategory.vue";
 export default {
   name: "Sidebar",
+  components: {
+    ProductsSubCategory,
+    ProductsCategory,
+  },
+  data() {
+    return {
+      subCategoryListVisible: false,
+    };
+  },
   computed: {
     ...mapGetters(["CATEGORIES", "DATA"]),
     imageSrc() {
@@ -75,17 +121,41 @@ export default {
         return "https://myatatasty.store/images/icon.png";
       }
     },
-    onClickCategory(category) {
-      let query = {
-        category: category.id,
+    onClickSubCategory(sub_category) {
+      this.subCategoryListVisible = false;
+      const query = {
+        ...this.$route.query,
+        sub_category: sub_category.id,
+        category: sub_category.category_id,
       };
       this.$router.replace({
         query,
       });
-      this.scrollToSubCategory(category);
+      this.scrollToSubCategory(sub_category);
     },
-
-    scrollToSubCategory(category) {
+    onClickCategory(category) {
+      this.subCategoryListVisible = false;
+      const query = { ...this.$route.query, category: category.id };
+      if (category.subCategories.length) {
+        query.sub_category = category.subCategories[0].id;
+      }
+      this.$router.replace({
+        query,
+      });
+      this.scrollToCategory(category);
+    },
+    scrollToSubCategory(sub_category) {
+      const SubCategories = document.querySelectorAll(
+        '.products__sub_category[data-sub-category-sub="' +
+          sub_category.id +
+          '"]'
+      );
+      if (!SubCategories.length) return;
+      // this.scrollTo(SubCategories[0]);
+      this.scrollWindow(SubCategories[0]);
+      this.SET_SCROLLING();
+    },
+    scrollToCategory(category) {
       const SubCategories = document.querySelectorAll(
         '.products__sub_category[data-category-sub="' + category.id + '"]'
       );
@@ -110,6 +180,10 @@ export default {
         left: 0,
         behavior: "smooth",
       });
+    },
+    onClickSubCategoryList() {
+      console.log("click");
+      this.subCategoryListVisible = !this.subCategoryListVisible;
     },
   },
 };
