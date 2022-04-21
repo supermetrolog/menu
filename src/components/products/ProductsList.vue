@@ -132,12 +132,20 @@ export default {
       });
     },
     async deleteProduct(product) {
+      const isApprove = confirm(
+        `Вы действительно хотите удалить продукт: "${product.title}"`
+      );
+      if (!isApprove) return;
       this.loader = true;
       await api.categories.deleteProduct(product.id);
       await this.FETCH_DATA(true);
       this.loader = false;
     },
     async deleteCategory(category) {
+      const isApprove = confirm(
+        `Вы действительно хотите удалить категорию: "${category.title}"`
+      );
+      if (!isApprove) return;
       this.loader = true;
       await api.categories.deleteCategory(category.id);
       await this.FETCH_CATEGORIES(true);
@@ -145,6 +153,10 @@ export default {
       this.loader = false;
     },
     async deleteSubCategory(subCategory) {
+      const isApprove = confirm(
+        `Вы действительно хотите удалить подкатегорию: "${subCategory.title}"`
+      );
+      if (!isApprove) return;
       this.loader = true;
       await api.categories.deleteSubCategory(subCategory.id);
       await this.FETCH_CATEGORIES(true);
