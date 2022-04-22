@@ -8,6 +8,7 @@
           label="логин"
           class="col-12"
           :v="v$.form.username"
+          @keydown.enter="onSubmit"
         />
       </FormGroup>
       <FormGroup class="mb-3 px-5">
@@ -16,6 +17,7 @@
           type="password"
           label="пароль"
           class="col-12"
+          @keydown.enter="onSubmit"
           :v="v$.form.password"
         />
       </FormGroup>
