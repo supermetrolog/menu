@@ -63,6 +63,7 @@ export default {
         title: null,
         image: null,
         fileList: [],
+        files: [],
       },
     };
   },
@@ -80,7 +81,10 @@ export default {
           ),
         },
         image: {
-          required: helpers.withMessage("выберите изображение", required),
+          required: helpers.withMessage(
+            "выберите изображение",
+            this.imageValidate
+          ),
         },
       },
     };
@@ -104,7 +108,12 @@ export default {
         }
       }
     },
-
+    imageValidate() {
+      if (!this.form.fileList.length && !this.form.files.length) {
+        return false;
+      }
+      return true;
+    },
     async updateCategory() {
       if (await this.UPDATE_CATEGORY(this.form)) {
         await this.FETCH_CATEGORIES(true);
