@@ -425,7 +425,8 @@ p.title {
     }
     &__title {
         // color: $color_success_alt;
-        color: $color_myata;
+        // color: $color_myata;
+        color: rgb(0, 253, 177);
         font-weight: bold;
     }
     &__description {
@@ -479,7 +480,8 @@ p.title {
                 content: '|';
                 position: absolute;
                 right: 2px;
-                color: rgb(0, 253, 177);
+                // color: rgb(0, 253, 177);
+                color: $color_success_alt;
             }
             &:last-child {
                 &::after {
