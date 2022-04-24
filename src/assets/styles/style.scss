@@ -208,7 +208,8 @@ section.sidebar {
                 justify-content: center;
                 align-items: center;
                 p {
-                    font-size: 10px;
+                    // font-size: 10px;
+                    font-size: 14px;
                     text-transform: capitalize;
                     color: darken($color_light, 10);
                     font-weight: bold;
@@ -232,7 +233,8 @@ section.sidebar {
                 text-transform: uppercase;
                 font-weight: bold;
                 font-size: 14px;
-                color: $color_myata;
+                // color: $color_myata;
+                color: $color_light;
                 letter-spacing: 2px;
                 i {
                     top: 0;
@@ -430,10 +432,8 @@ p.title {
         padding: 5px;
     }
     &__title {
-        // color: $color_success_alt;
-        // color: $color_myata;
         color: $color_light;
-        // color: rgb(0, 253, 177);
+        font-size: 18px;
         font-weight: bold;
     }
     &__description {
@@ -460,7 +460,7 @@ p.title {
             }
         }
         p {
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 300;
             line-height: .9rem;
             color: #ccc;
@@ -483,7 +483,7 @@ p.title {
         line-height: 12px;
         p {
             display: inline-block;
-            font-size: 12px;
+            font-size: 15px;
             margin: 0;
             padding: 0 12px 0 0;
             letter-spacing: 2px;
@@ -507,7 +507,7 @@ p.title {
     }
     .price {
         p {
-            font-size: 14px;
+            font-size: 20px;
             display: inline-block;
             font-style: italic;
         }
