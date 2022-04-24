@@ -3,7 +3,7 @@
     class="products__item row no-gutters"
     @click.prevent.stop="onClickOpenned"
   >
-    <div class="col-3 align-self-center">
+    <div class="col-3 align-self-center" @click.prevent.stop="addToFavorites">
       <div class="products__image">
         <div class="image-container">
           <img :src="imageSrc" alt="" />
@@ -12,14 +12,20 @@
     </div>
     <div class="col-9">
       <div class="products__params">
-        <div class="products__title">
-          <p :class="{ 'text-warning': selected }">
+        <div class="products__title" @click.prevent.stop="addToFavorites">
+          <p
+            :class="{
+              'text-warning': FAVORITES.find((item) => item.id == product.id),
+            }"
+          >
             {{ product.title }}
           </p>
         </div>
         <div class="products__price_and_voluem">
-          <ProductItemVoluem :product="product" />
-          <ProductItemPrice :product="product" />
+          <div>
+            <ProductItemVoluem :product="product" />
+            <ProductItemPrice :product="product" />
+          </div>
         </div>
         <div class="products__ingredients" v-if="product.ingredients">
           <p v-for="ingredient of product.ingredients" :key="ingredient.id">
@@ -130,11 +136,22 @@ export default {
       };
       this.$router.push({ path: "/admin/form", query });
     },
+    addToFavorites() {
+      if (!this.selected) {
+        this.FAVORITES_PUSH(this.product);
+      } else {
+        this.FAVORITES_FILTER(this.product);
+      }
+    },
   },
   mounted() {
     this.checkLongDescription();
-    this.observer.observe(this.$el);
-    this.observerCategory.observe(this.$el);
+    if (this.observer) {
+      this.observer.observe(this.$el);
+    }
+    if (this.observerCategory) {
+      this.observerCategory.observe(this.$el);
+    }
   },
 };
 </script>

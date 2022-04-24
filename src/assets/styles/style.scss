@@ -1,7 +1,8 @@
 @import "null.scss";
 @import "var.scss";
 @import "mixins.scss";
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,500;1,700;1,900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,500;1,700;1,900&display=swap');
 * {
     font-family: Montserrat;
 }
@@ -390,12 +391,6 @@ p.title {
                 right: unset;
                 top: unset;
             }
-            &.selected {
-                left: unset;
-                bottom: 0;
-                right: 0;
-                top: unset;
-            }
             &.for-edit {
                 color: $color_myata;
                 font-size: 18px;
@@ -425,7 +420,8 @@ p.title {
     }
     &__title {
         // color: $color_success_alt;
-        color: $color_myata;
+        // color: $color_myata;
+        color: $color_light;
         // color: rgb(0, 253, 177);
         font-weight: bold;
     }
@@ -456,12 +452,20 @@ p.title {
             font-size: 13px;
             font-weight: 300;
             line-height: .9rem;
+            color: #ccc;
         }
     }
     &__price_and_voluem {
         // text-align: right;
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: end;
+        .price {
+            &__range {
+                display: flex;
+                justify-content: end;
+            }
+        }
     }
     &__ingredients {
         margin-bottom: 10px;
