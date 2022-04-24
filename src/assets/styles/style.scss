@@ -245,19 +245,20 @@ section.sidebar {
         }
         &-items {
             .products__category {
-                width: 95%;
+                // width: 95%;
                 margin: 0 auto;
                 &.active {
                     .products__category__title {
-                        background-color: $color_myata;
+                        color: $color_myata;
                     }
                 }
                 &__title {
-                    padding: 10px 0;
-                    background-color: $general_bg_color;
-                    margin-top: 10px;
+                    color: $color_light;
+                    padding: 0;
                     font-size: 14px;
-                    border-radius: 3px;
+                    font-style: normal;
+                    // background-color: lighten($color: #000000, $amount: 10);
+                    // border-radius: 3px;
                 }
             }
             .products__sub_category {
@@ -266,15 +267,17 @@ section.sidebar {
                         background-color: $color_myata;
                         color: #000;
                         font-weight: bold;
-                        font-size: 14px;
                     }
                 }
                 &__title {
-                    margin-top: 10px;
+                    font-weight: normal;
+                    margin-bottom: 5px;
+                    &:last-child {
+                        margin: 0;
+                    }
                     padding: 8px 0;
                     border-bottom: 1px solid $border_color;
                     background-color: $general_bg_color;
-                    border-radius: 3px;
                 }
             }
         }
