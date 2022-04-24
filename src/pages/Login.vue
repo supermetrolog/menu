@@ -68,8 +68,8 @@ export default {
       v$: useValidate(),
       loader: false,
       form: {
-        username: "admin",
-        password: "myata99512hh",
+        username: null,
+        password: null,
       },
     };
   },
