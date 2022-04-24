@@ -22,10 +22,8 @@
           </p>
         </div>
         <div class="products__price_and_voluem">
-          <div>
-            <ProductItemVoluem :product="product" />
-            <ProductItemPrice :product="product" />
-          </div>
+          <ProductItemVoluem :product="product" />
+          <ProductItemPrice :product="product" />
         </div>
         <div class="products__ingredients" v-if="product.ingredients">
           <p v-for="ingredient of product.ingredients" :key="ingredient.id">

@@ -472,10 +472,11 @@ p.title {
         // justify-content: space-between;
         justify-content: end;
         .price {
-            &__range {
-                display: flex;
-                justify-content: end;
-            }
+            margin-left: 10px;
+            // &__range {
+            //     display: flex;
+            //     justify-content: end;
+            // }
         }
     }
     &__ingredients {
