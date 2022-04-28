@@ -467,17 +467,13 @@ p.title {
         }
     }
     &__price_and_voluem {
-        // text-align: right;
         display: flex;
-        // justify-content: space-between;
         justify-content: end;
         text-align: right;
+        background-color: blue;
         .price {
             margin-left: 10px;
-            // &__range {
-            //     display: flex;
-            //     justify-content: end;
-            // }
+            background-color: red;
         }
     }
     &__ingredients {
