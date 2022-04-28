@@ -470,23 +470,24 @@ p.title {
         // display: flex;
         // justify-content: end;
         // text-align: right;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: end;
-        justify-content: end;
-        -webkit-flex-wrap: wrap;
-        -moz-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        -o-flex-wrap: wrap;
-        flex-wrap: wrap;
-        background-color: blue;
+        // display: -webkit-box;
+        // display: -moz-box;
+        // display: -ms-flexbox;
+        // display: -webkit-flex;
+        // display: flex;
+        // -webkit-box-pack: justify;
+        // -webkit-justify-content: end;
+        // justify-content: end;
+        // -webkit-flex-wrap: wrap;
+        // -moz-flex-wrap: wrap;
+        // -ms-flex-wrap: wrap;
+        // -o-flex-wrap: wrap;
+        // flex-wrap: wrap;
+        text-align: right;
         .price {
+            display: inline-block;
+            margin-left: auto;
             margin-left: 10px;
-            background-color: red;
         }
     }
     &__ingredients {
