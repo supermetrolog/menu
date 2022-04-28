@@ -2,7 +2,9 @@
   <div>
     <notifications position="bottom right" group="app" />
     <Loader v-if="loader" />
-    <component :is="layout" v-else> </component>
+    <KeepAlive v-else>
+      <component :is="layout" :key="$route.path"> </component>
+    </KeepAlive>
   </div>
 </template>
 
@@ -14,6 +16,7 @@ import SidebarLayout from "./components/common/layouts/sidebar/SidebarLayout";
 import { mapActions } from "vuex";
 
 export default {
+  name: "App",
   components: {
     MainLayout,
     EmptyLayout,
@@ -33,6 +36,7 @@ export default {
   methods: {
     ...mapActions(["INIT", "FETCH_CATEGORIES", "FETCH_DATA"]),
   },
+
   async mounted() {
     document.title = "Мята меню";
     this.loader = true;

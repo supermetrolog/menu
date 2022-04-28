@@ -1,35 +1,37 @@
 <template>
   <div class="products" id="observable-root">
     <Loader v-if="loader" />
-    <ProductsCategory
-      v-for="category of DATA"
-      :key="category.id"
-      :category="category"
-      :isAdmin="isAdmin"
-      @deleteCategory="deleteCategory"
-    >
-      <ProductsSubCategory
-        v-for="subCategory of category.subCategories"
-        :key="subCategory.id"
-        :subCategory="subCategory"
+    <KeepAlive>
+      <ProductsCategory
+        v-for="category of DATA"
+        :key="category.id"
+        :category="category"
         :isAdmin="isAdmin"
-        :data-category-sub="subCategory.category_id"
-        :data-sub-category-sub="subCategory.id"
-        @deleteSubCategory="deleteSubCategory"
+        @deleteCategory="deleteCategory"
       >
-        <ProductsItem
-          v-for="product of subCategory.products"
-          :key="product.id"
-          :product="product"
+        <ProductsSubCategory
+          v-for="subCategory of category.subCategories"
+          :key="subCategory.id"
+          :subCategory="subCategory"
           :isAdmin="isAdmin"
-          :data-sub-category="subCategory.id"
-          :data-category="category.id"
-          :observer="observerSubCategory"
-          :observerCategory="observer"
-          @deleteProduct="deleteProduct"
-        />
-      </ProductsSubCategory>
-    </ProductsCategory>
+          :data-category-sub="subCategory.category_id"
+          :data-sub-category-sub="subCategory.id"
+          @deleteSubCategory="deleteSubCategory"
+        >
+          <ProductsItem
+            v-for="product of subCategory.products"
+            :key="product.id"
+            :product="product"
+            :isAdmin="isAdmin"
+            :data-sub-category="subCategory.id"
+            :data-category="category.id"
+            :observer="observerSubCategory"
+            :observerCategory="observer"
+            @deleteProduct="deleteProduct"
+          />
+        </ProductsSubCategory>
+      </ProductsCategory>
+    </KeepAlive>
   </div>
 </template>
 

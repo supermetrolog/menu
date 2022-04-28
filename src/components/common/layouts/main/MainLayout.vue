@@ -9,23 +9,22 @@
           enter-active-class="animate__animated animate__fadeIn for__page"
           leave-active-class="animate__animated animate__fadeOut for__page"
         >
-          <component :is="Component" :key="$route.path"></component>
+          <KeepAlive>
+            <component :is="Component" :key="$route.path"></component>
+          </KeepAlive>
         </transition>
       </router-view>
     </section>
-    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
 import Header from "./Header.vue";
-// import Footer from "./Footer.vue";
 import Sidebar from "./Sidebar.vue";
 export default {
   name: "MainLayout",
   components: {
     Header,
-    // Footer,
     Sidebar,
   },
 };

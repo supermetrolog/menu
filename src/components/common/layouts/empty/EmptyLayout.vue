@@ -7,7 +7,9 @@
           enter-active-class="animate__animated animate__fadeIn for__page"
           leave-active-class="animate__animated animate__fadeOut for__page"
         >
-          <component :is="Component" :key="$route.path"></component>
+          <KeepAlive>
+            <component :is="Component" :key="$route.path"></component>
+          </KeepAlive>
         </transition>
       </router-view>
     </section>
