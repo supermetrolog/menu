@@ -5,7 +5,8 @@
 // @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap');
 * {
     // font-family: Montserrat;
     // font-family: Pacifico;
@@ -135,6 +136,7 @@ header {
                 .badge {
                     top: 5px;
                     right: 5px;
+                    font-family: Poppins;
                 }
             }
         }
@@ -225,14 +227,14 @@ section.sidebar {
         justify-content: center;
         position: relative;
         .current-sub-category {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             p {
                 position: relative;
                 transform: rotate(-90deg);
                 font-style: italic;
                 text-transform: uppercase;
                 font-weight: bold;
-                font-size: 14px;
+                font-size: 12px;
                 // color: $color_myata;
                 color: $color_light;
                 letter-spacing: 2px;
@@ -240,12 +242,15 @@ section.sidebar {
                     top: 0;
                     right: -25px;
                     position: absolute;
-                    font-size: 22px;
+                    font-size: 18px;
                 }
             }
         }
         &-container {
             background-color: #000;
+            background-color: red;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: fixed;
             top: $header_height;
             bottom: 0;
@@ -467,22 +472,6 @@ p.title {
         }
     }
     &__price_and_voluem {
-        // display: flex;
-        // justify-content: end;
-        // text-align: right;
-        // display: -webkit-box;
-        // display: -moz-box;
-        // display: -ms-flexbox;
-        // display: -webkit-flex;
-        // display: flex;
-        // -webkit-box-pack: justify;
-        // -webkit-justify-content: end;
-        // justify-content: end;
-        // -webkit-flex-wrap: wrap;
-        // -moz-flex-wrap: wrap;
-        // -ms-flex-wrap: wrap;
-        // -o-flex-wrap: wrap;
-        // flex-wrap: wrap;
         text-align: right;
         .price {
             display: inline-block;
@@ -519,9 +508,13 @@ p.title {
     }
     .price {
         p {
-            font-size: 20px;
+            font-size: 14px;
             display: inline-block;
             font-style: italic;
+            font-family: Poppins;
+            small {
+                font-size: 16px;
+            }
         }
         &__with_old_price {
             p {
