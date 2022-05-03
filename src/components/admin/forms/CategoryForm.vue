@@ -21,7 +21,7 @@
           v-model:data="form.image"
           :multiple="false"
           :accept="'image/*'"
-          label="Документы"
+          label="Изображение"
           class="col-12"
           :v="v$.form.image"
         >
@@ -63,7 +63,6 @@ export default {
         title: null,
         image: null,
         fileList: [],
-        files: [],
       },
     };
   },
@@ -109,7 +108,7 @@ export default {
       }
     },
     imageValidate() {
-      if (!this.form.fileList.length && !this.form.files.length) {
+      if (!this.form.fileList.length && !this.form.image) {
         return false;
       }
       return true;

@@ -8,6 +8,17 @@
     </div>
     <Form @submit="onSubmit" class="autosize px-5">
       <FormGroup class="mb-2">
+        <FileInput
+          v-model:native="form.fileList"
+          v-model:data="form.image"
+          :multiple="false"
+          :accept="'image/*'"
+          label="Изображение"
+          class="col-12"
+          :v="v$.form.image"
+        >
+          Выбрать файлы
+        </FileInput>
         <Input
           v-model="form.title"
           required
@@ -134,6 +145,7 @@ import Tags from "@/components/common/form/Tags";
 import Textarea from "@/components/common/form/Textarea";
 import Select from "@/components/common/form/Select";
 import Submit from "@/components/common/form/Submit";
+import FileInput from "@/components/common/form/FileInput.vue";
 import useValidate from "@vuelidate/core";
 import { required, helpers, minLength } from "@vuelidate/validators";
 import { mapActions, mapGetters } from "vuex";
@@ -148,6 +160,7 @@ export default {
     Select,
     Textarea,
     Tags,
+    FileInput,
   },
   data() {
     return {
@@ -168,6 +181,8 @@ export default {
         voluem_type: null,
         is_new: null,
         ingredients: [],
+        image: null,
+        fileList: [],
       },
     };
   },

@@ -4,7 +4,7 @@
     @click.prevent.stop="onClickOpenned"
   >
     <div class="col-3 align-self-center" @click.prevent.stop="addToFavorites">
-      <div class="products__image">
+      <div class="products__image" :class="{ 'default-image': !imageExist }">
         <div class="image-container">
           <img :src="imageSrc" alt="" />
         </div>
@@ -107,11 +107,18 @@ export default {
           (subCategory) => subCategory.id == this.product.sub_category_id
         )
       );
-      if (process.env.NODE_ENV == "development") {
-        return "http://menu/uploads/" + category.image;
-      } else {
-        return "https://myatatasty.store/uploads/" + category.image;
+      let image = category.image;
+      if (this.product.image) {
+        image = this.product.image;
       }
+      if (process.env.NODE_ENV == "development") {
+        return "http://menu/uploads/" + image;
+      } else {
+        return "https://myatatasty.store/uploads/" + image;
+      }
+    },
+    imageExist() {
+      return !!this.product.image;
     },
   },
   methods: {

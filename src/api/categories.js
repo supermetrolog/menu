@@ -31,18 +31,6 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
-    // async createCategory(formdata) {
-    //     console.warn('CREATE');
-    //     let url = "categories";
-    //     let data = false;
-    //     await axios
-    //         .post(url, formdata)
-    //         .then((Response) => {
-    //             data = SuccessHandler.getData(Response);
-    //         })
-    //         .catch((e) => ErrorHandle.setError(e));
-    //     return data;
-    // },
     async createCategory(formdata) {
         const url = "categories";
         let data = false;
@@ -63,18 +51,6 @@ export default {
             .catch((e) => ErrorHandle.setError(e));
         return data;
     },
-    // async updateCategory(formdata) {
-    //     console.warn('UPDATE');
-    //     let url = "categories/" + formdata.id;
-    //     let data = false;
-    //     await axios
-    //         .patch(url, formdata)
-    //         .then((Response) => {
-    //             data = SuccessHandler.getData(Response);
-    //         })
-    //         .catch((e) => ErrorHandle.setError(e));
-    //     return data;
-    // },
     async updateCategory(formdata) {
         console.warn('UPDATE');
         let url = "categories/" + formdata.id;
@@ -132,9 +108,6 @@ export default {
         return data;
     },
     async searchSubCategories(query = {}) {
-        // if (expand === null) {
-        //     expand = "subCategories.products.ingredients";
-        // }
         query = new URLSearchParams(query).toString();
         let url = "sub-categories?" + query;
         let data = false;
@@ -148,11 +121,18 @@ export default {
     },
 
     async createProduct(formdata) {
-        console.warn('CREATE');
-        let url = "products";
+        const url = "products";
         let data = false;
+        formdata = getFormDataWithFiles(formdata);
+
+        let config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
+            }
+        };
         await axios
-            .post(url, formdata)
+            .post(url, formdata, config)
             .then((Response) => {
                 data = SuccessHandler.getData(Response);
             })
@@ -163,8 +143,16 @@ export default {
         console.warn('UPDATE');
         let url = "products/" + formdata.id;
         let data = false;
+        formdata = getFormDataWithFiles(formdata);
+
+        let config = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data',
+            }
+        };
         await axios
-            .patch(url, formdata)
+            .patch(url, formdata, config)
             .then((Response) => {
                 data = SuccessHandler.getData(Response);
             })
