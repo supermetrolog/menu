@@ -114,7 +114,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         return "http://menu/uploads/" + image;
       } else {
-        return "https://myatatasty.store/uploads/" + image;
+        return "https://api.myatatasty.ru/uploads/" + image;
       }
     },
     imageExist() {

@@ -84,7 +84,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         return "http://menu/images/kitchen.png";
       } else {
-        return "https://myatatasty.store/images/kitchen.png";
+        return "https://api.myatatasty.ru/images/kitchen.png";
       }
     },
     currentSubCategory() {
@@ -109,7 +109,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         baseUrl = "http://menu/uploads/";
       } else {
-        baseUrl = "https://myatatasty.store/uploads/";
+        baseUrl = "https://api.myatatasty.ru/uploads/";
       }
       if (category.image) {
         return baseUrl + category.image;
@@ -118,7 +118,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         return "http://menu/images/icon.png";
       } else {
-        return "https://myatatasty.store/images/icon.png";
+        return "https://api.myatatasty.ru/images/icon.png";
       }
     },
     onClickSubCategory(sub_category) {

@@ -32,7 +32,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         return "http://menu/images/header_logo2.png";
       } else {
-        return "https://myatatasty.store/images/header_logo2.png";
+        return "https://api.myatatasty.ru/images/header_logo2.png";
       }
     },
   },

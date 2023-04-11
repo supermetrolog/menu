@@ -32,16 +32,10 @@
           >
             <div class="row no-gutters">
               <div
-                class="
-                  col-12
-                  file_image
-                  d-flex
-                  align-self-center
-                  justify-content-center
-                "
+                class="col-12 file_image d-flex align-self-center justify-content-center"
               >
                 <img
-                  src="https://myatatasty.store/images/icon.png"
+                  src="https:/api.myatatasty.ru/images/icon.png"
                   alt="file"
                   :class="file.src2"
                   :title="file.name"
@@ -68,17 +62,10 @@
           <div class="col-12 file ml-auto">
             <div class="row no-gutters">
               <div
-                class="
-                  col-12
-                  file_image
-                  single
-                  d-flex
-                  align-self-center
-                  justify-content-center
-                "
+                class="col-12 file_image single d-flex align-self-center justify-content-center"
               >
                 <img
-                  :src="'https://myatatasty.store/uploads/' + files"
+                  :src="'https://api.myatatasty.ru/uploads/' + files"
                   alt="file"
                   class="image"
                 />
@@ -107,17 +94,11 @@
         >
           <div class="row no-gutters">
             <div
-              class="
-                col-12
-                file_image
-                d-flex
-                align-self-center
-                justify-content-center
-              "
+              class="col-12 file_image d-flex align-self-center justify-content-center"
               :class="{ single: !multiple }"
             >
               <img
-                src="https://myatatasty.store/images/icon.png"
+                src="https://api.myatatasty.ru/images/icon.png"
                 alt="file"
                 :class="file.src"
                 :title="file.name"
