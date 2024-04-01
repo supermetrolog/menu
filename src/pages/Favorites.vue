@@ -2,7 +2,7 @@
   <div class="favorites">
     <div>
       <div class="title">
-        <p>Избаранное</p>
+        <p>Избранное</p>
       </div>
       <div class="products">
         <ProductsItem
